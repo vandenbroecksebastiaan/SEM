@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{XCharter}
+\usepackage{rotating}
+\usepackage[backend=biber,sorting=none,style=apa]{biblatex}
+\addbibresource{library.bib}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+\setlength{\parskip}{5pt}
+\setlength\parindent{0pt}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lscape}
+\usepackage{psfrag}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = false,
+  urlcolor   = blue,
+  linkcolor  = blue,
+  citecolor  = red
+}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage{tikz}
+\usepackage[english]{babel}
+\usepackage{appendix}
+\usepackage{parskip}
+\usepackage{placeins}
+\usepackage[tableposition=top]{caption}
+\sloppy
+\widowpenalty=10000
+\clubpenalty=10000
+\edef\today{%\number\day\
+\ifcase\month\or
+January\or February\or March\or April\or May\or June\or July\or
+August\or September\or October\or November\or December\fi\ \number\year}
+\title{\vspace*{40.0mm}
+  \bf\sf Assignment
+         \vspace*{20.0mm} \\
+  \vspace*{40.0mm}}
+\author{\sf Van den Broeck Sebastiaan (r0902562)}
+\date{\sf 13/03/2023}
+
+\begin{document}
+
+\begin{figure}
+  \parbox[t]{125mm}{
+    \vspace*{6mm}
+    \scriptsize\sf           FACULTY OF SCIENCE \\
+    \scriptsize\sf           DEPARTMENT OF MATHEMATICS \\
+    \scriptsize\sf\bfseries  MASTER OF STATISTICS AND DATA SCIENCE \\
+    \scriptsize\sf\bfseries  STRUCTURAL EQUATION MODELING \\}
+  \parbox[t]{40mm}{
+    \begin{flushright}
+      \includegraphics[height=15mm]{logo.eps.pdf}
+    \end{flushright}}
+\end{figure}
+
+\maketitle
+\thispagestyle{empty}
+\raggedbottom
+
+\cleardoublepage
+\setcounter{page}{1}
+\setcounter{tocdepth}{3}
+
+\section{Introduction}
+\section{Data}
+\section{Model}
+
+\end{document}
