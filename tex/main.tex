@@ -35,7 +35,6 @@
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{adjustbox}
-\usepackage{placeins}
 \usepackage{tikz}
 \usepackage[english]{babel}
 \usepackage{appendix}
@@ -80,7 +79,188 @@ August\or September\or October\or November\or December\fi\ \number\year}
 \setcounter{tocdepth}{3}
 
 \section{Introduction}
+
+Harm avoidance and self-directedness have been linked to depression.
+A behaviour can be classified under harm avoidance if it is done to avoid novelty and punishment.
+Self-directedness, on the other hand, is a form of self-determination and ability to regulate behaviour to suit goals and values.
+It has been proposed that harm avoidance and self-directedness are indirectly linked to depression through social functioning (\cite{tse2011}).
+In this work I will test this hypothesis on a new dataset, which will be discussed next.
+The structural equation model to test the hypothesis will be talked about.
+Lastly, the results and implications thereof will be considered.
+
 \section{Data}
-\section{Model}
+
+The data treated in the report is the Midlife in the United States (MIDUS) series.
+Currently, there are three waves in the study, which were collected via phone interviews, surveys and by bringing participants into clinical settings to facility collecting biological data.
+All three waves cover the contiguous United States in its entirety.
+The first wave was collected in 1995 and 1996, while the second wave was collected in 2004 and 2005.
+The most recent wave was collected in 2013 and 2014.
+The second and third wave have been combined to create a bigger dataset.
+It was not possible to incorporate the first dataset, since a lot of variables changed between the first and second and third waves (\cite{radler2014}).
+
+An important reason for choosing this dataset is that it contains a lot of documentation for which variables form certain latent constructs such as depression or social anxiety.
+Since I am not familiar with the field of psychology this would save me a lot of time.
+Depression is the most important latent variable in this work.
+It has been measures through seven questions during which the respondent reflects over the last two weeks.
+For example, the questions include losing interest, becoming tired, having trouble falling asleep or thinking about death.
+Each variable which measures this latent construct has been coded such that a 1 reflects a yes answer.
+As could be expected, a 0 then means a respondent has answered no.
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Construct}          & \textbf{Code} & \textbf{Question}                                                                                                                                              \\ \hline
+\multirow{7}{*}{Depression} & C1PA63        & During those two weeks, did you lose interest in most things?                                                                                                  \\ \cline{2-3} 
+                            & C1P164        & \begin{tabular}[c]{@{}l@{}}Thinking about these same two weeks, did you feel more tired\\ out or low on energy?\end{tabular}                                   \\ \cline{2-3} 
+                            & C1PA65        & During those same two weeks, did you lose appetite?                                                                                                            \\ \cline{2-3} 
+                            & C1PA66        & \begin{tabular}[c]{@{}l@{}}Did you have more trouble falling asleep than you usually do\\ during those two weeks?\end{tabular}                                 \\ \cline{2-3} 
+                            & C1PA67        & \begin{tabular}[c]{@{}l@{}}During that same two week period, did you have a lot more\\ trouble concentrating than usual?\end{tabular}                          \\ \cline{2-3} 
+                            & C1PA68        & \begin{tabular}[c]{@{}l@{}}People sometimes feel down on themselves, no good, or worthless.\\ During that two-week period, did you feel this way?\end{tabular} \\ \cline{2-3} 
+                            & C1PA69        & \begin{tabular}[c]{@{}l@{}}Did you think a lot about death - either your own, someone else's\\ or death in general - during those two weeks?\end{tabular}      \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[h]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|ll|}
+\hline
+\multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{2}{l|}{\textbf{Count}} \\ \cline{3-4} 
+                                    &                                & \multicolumn{1}{l|}{0}      & 1     \\ \hline
+\multirow{7}{*}{Depression}         & C1PA63                         & \multicolumn{1}{l|}{156}    & 633   \\ \cline{2-4} 
+                                    & C1P164                         & \multicolumn{1}{l|}{61}     & 726   \\ \cline{2-4} 
+                                    & C1PA65                         & \multicolumn{1}{l|}{338}    & 445   \\ \cline{2-4} 
+                                    & C1PA66                         & \multicolumn{1}{l|}{223}    & 565   \\ \cline{2-4} 
+                                    & C1PA67                         & \multicolumn{1}{l|}{111}    & 675   \\ \cline{2-4} 
+                                    & C1PA68                         & \multicolumn{1}{l|}{283}    & 507   \\ \cline{2-4} 
+                                    & C1PA69                         & \multicolumn{1}{l|}{304}    & 485   \\ \hline
+\end{tabular}
+}
+\end{table}
+
+Another important aspect in this report is harm avoidance. Since it cannot be measured directly, four questions were asked to get an idea about this variable.
+First, interviewees were asked whether they would enjoy experiencing an earthquake or learning to walk the tightrope.
+These two variables were reverse recoded such that a 4 reflects not agreeing with the statement at all (harm avoidance), while a 1 indicates fully agreeing (no avoidance).
+Second, interviewees were presented with two scenario's twice.
+For each question, one scenario corresponds to a harmful situation, while the other scenario's is harmless.
+Again, there was a recoding such that a higher score on these two variables indicates avoiding harm.
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Construct}              & \textbf{Code} & \textbf{Question}                                                                                                                                                                                                                                                                                                              \\ \hline
+\multirow{4}{*}{Harm avoidance} & C1SE7D        & It might be fun and exciting to be in an earthquake.                                                                                                                                                                                                                                                                           \\ \cline{2-3} 
+                                & C1SE7V        & It might be fun learning to walk a tightrope.                                                                                                                                                                                                                                                                                  \\ \cline{2-3} 
+                                & C1SE8         & \begin{tabular}[c]{@{}l@{}}Of these two situations, I would dislike more: Situation 1: \\ Riding a long stretch of rapids in a canoe; Situation 2:\\ Waiting for someone who's late.\end{tabular}                                                                                                                              \\ \cline{2-3} 
+                                & C1SE9         & \begin{tabular}[c]{@{}l@{}}Of these two situations, I would dislike more: Situation 1:\\ Being at the circus when two lions suddenly get loose\\ down in the ring; Situation 2: Bringing my whole family\\ to the circus and then not being able to get in because a\\ clerk sold me tickets for the wrong night.\end{tabular} \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|llll|}
+\hline
+\multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{4}{l|}{\textbf{Count}}                                                                              \\ \cline{3-6} 
+                                    &                                & \multicolumn{1}{l|}{\textbf{1 (harm)}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{3}} & \textbf{4 (no harm)} \\ \hline
+\multirow{2}{*}{Harm avoidance}     & C1SE7D                         & \multicolumn{1}{l|}{274}               & \multicolumn{1}{l|}{875}        & \multicolumn{1}{l|}{838}        & 4889                 \\ \cline{2-6} 
+                                    & C1SE7V                         & \multicolumn{1}{l|}{367}               & \multicolumn{1}{l|}{1222}       & \multicolumn{1}{l|}{1163}       & 4238                 \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|ll|}
+\hline
+\multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{2}{l|}{\textbf{Count}}          \\ \cline{3-4} 
+                                    &                                & \multicolumn{1}{l|}{\textbf{0 (harm)}} & \textbf{1 (no harm)} \\ \hline
+\multirow{2}{*}{Harm avoidance}     & C1SE8                          & \multicolumn{1}{l|}{3803}                 & 3089       \\ \cline{2-4} 
+                                    & C1SE7V                         & \multicolumn{1}{l|}{2994}                 & 3898       \\ \hline
+\end{tabular}
+}
+\end{table}
+
+We should not forget about self-directedness, which has been measured through three variables.
+Making plans for the future, knowing what to want out of life and setting goals are important for this dimension.
+Again, the variables were reverse coded such that a higher score reflects agreeing more with the statement.
+The data indicates that most participants agree somewhat or fully what the three statements.
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Construct}                 & \textbf{Code} & \textbf{Question}                                   \\ \hline
+\multirow{3}{*}{Self-directedness} & C1SE14O       & I like to make plans for the future.                \\ \cline{2-3} 
+                                   & C1SE14R       & I know what I want out of life.                     \\ \cline{2-3} 
+                                   & C1SE14P       & I find it helpful to set goals for the near future. \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|llll|}
+\hline
+\multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{4}{l|}{\textbf{Count}}                                                                              \\ \cline{3-6} 
+                                    &                                & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{3}} & \textbf{4} \\ \hline
+\multirow{3}{*}{Self-directedness}  & C1SE14O                        & \multicolumn{1}{l|}{247}        & \multicolumn{1}{l|}{1303}       & \multicolumn{1}{l|}{2754}       & 2590       \\ \cline{2-6} 
+                                    & C1SE14R                        & \multicolumn{1}{l|}{251}        & \multicolumn{1}{l|}{1089}       & \multicolumn{1}{l|}{2929}       & 2604       \\ \cline{2-6} 
+                                    & C1SE14P                        & \multicolumn{1}{l|}{318}        & \multicolumn{1}{l|}{1320}       & \multicolumn{1}{l|}{3071}       & 2184       \\ \hline
+\end{tabular}
+}
+\end{table}
+
+Lastly, the latent variable social functioning has been used in the analysis.
+Seven questions related to this dimension were asked.
+The variables C1SE1BB, C1SE1D, C1SE1I and C1SE1V were reverse coded such that a higher score indicates a higher degree of social functioning.
+
+\begin{table}[h!]
+\scalebox{0.9}{
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Construct}                  & \textbf{Code} & \textbf{Question}                                                                                                                                    \\ \hline
+\multirow{7}{*}{Social functioning} & C1SE1BB       & \begin{tabular}[c]{@{}l@{}}People would describe me as a giving person, willing to share my time \\ with others.\end{tabular}                        \\ \cline{2-3} 
+                                    & C1SE1D        & Most people see me as loving and affectionate.                                                                                                       \\ \cline{2-3} 
+                                    & C1SE1HH       & I have not experienced many warm and trusting relationships with others.                                                                             \\ \cline{2-3} 
+                                    & C1SE1J        & Maintaining close relationships has been difficult and frustrating for me.                                                                           \\ \cline{2-3} 
+                                    & C1SE1I        & \begin{tabular}[c]{@{}l@{}}I think it is important to have new experiences that challenge how you think\\ about yourself and the world.\end{tabular} \\ \cline{2-3} 
+                                    & C1SE1P        & \begin{tabular}[c]{@{}l@{}}I often feel lonely because I have few close friends with whom to share my\\ concerns.\end{tabular}                       \\ \cline{2-3} 
+                                    & C1SE1V        & I enjoy personal and mutual conversations with family members and friends.                                                                           \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabular}{|l|l|lllllll|}
+\hline
+\multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{7}{l|}{\textbf{Count}}                                                                                                                                                                                    \\ \cline{3-9} 
+                                    &                                & \multicolumn{1}{l|}{\textbf{1}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{3}} & \multicolumn{1}{l|}{\textbf{4}} & \multicolumn{1}{l|}{\textbf{5}} & \multicolumn{1}{l|}{\textbf{6}} & \textbf{7} \\ \hline
+\multirow{7}{*}{Social functioning} & C1SE1BB                        & \multicolumn{1}{l|}{28}         & \multicolumn{1}{l|}{76}         & \multicolumn{1}{l|}{127}        & \multicolumn{1}{l|}{472}        & \multicolumn{1}{l|}{799}        & \multicolumn{1}{l|}{2382}       & 3055       \\ \cline{2-9} 
+                                    & C1SE1D                         & \multicolumn{1}{l|}{43}         & \multicolumn{1}{l|}{126}        & \multicolumn{1}{l|}{219}        & \multicolumn{1}{l|}{807}        & \multicolumn{1}{l|}{815}        & \multicolumn{1}{l|}{2598}       & 230        \\ \cline{2-9} 
+                                    & C1SE1HH                        & \multicolumn{1}{l|}{291}        & \multicolumn{1}{l|}{501}        & \multicolumn{1}{l|}{575}        & \multicolumn{1}{l|}{441}        & \multicolumn{1}{l|}{497}        & \multicolumn{1}{l|}{1382}       & 3242       \\ \cline{2-9} 
+                                    & C1SE1J                         & \multicolumn{1}{l|}{236}        & \multicolumn{1}{l|}{575}        & \multicolumn{1}{l|}{818}        & \multicolumn{1}{l|}{711}        & \multicolumn{1}{l|}{512}        & \multicolumn{1}{l|}{1524}       & 2550       \\ \cline{2-9} 
+                                    & C1SE1I                         & \multicolumn{1}{l|}{113}        & \multicolumn{1}{l|}{136}        & \multicolumn{1}{l|}{142}        & \multicolumn{1}{l|}{709}        & \multicolumn{1}{l|}{1154}       & \multicolumn{1}{l|}{2190}       & 2483       \\ \cline{2-9} 
+                                    & C1SE1P                         & \multicolumn{1}{l|}{242}        & \multicolumn{1}{l|}{447}        & \multicolumn{1}{l|}{744}        & \multicolumn{1}{l|}{655}        & \multicolumn{1}{l|}{479}        & \multicolumn{1}{l|}{1321}       & 3036       \\ \cline{2-9} 
+                                    & C1SE1V                         & \multicolumn{1}{l|}{63}         & \multicolumn{1}{l|}{64}         & \multicolumn{1}{l|}{105}        & \multicolumn{1}{l|}{211}        & \multicolumn{1}{l|}{589}        & \multicolumn{1}{l|}{1879}       & 4024       \\ \hline
+\end{tabular}
+\end{table}
+
+
+\FloatBarrier
+\pagebreak
+\section{The base model}
+
+\begin{}
+
+\FloatBarrier
+\pagebreak
+\section{Expanding the base model}
+
+\FloatBarrier
+\pagebreak
+\section{Conclusion}
 
 \end{document}
