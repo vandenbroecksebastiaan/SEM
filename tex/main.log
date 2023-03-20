@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.2)  19 MAR 2023 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.2)  20 MAR 2023 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1360,7 +1360,69 @@ l.148
        [1
 
 ]
-Overfull \hbox (3.34946pt too wide) in paragraph at lines 233--234
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../visualizations/corr.png, id=51, 3556.28625pt x 3556.28625pt>
+File: ../visualizations/corr.png Graphic file (type png)
+<use ../visualizations/corr.png>
+Package pdftex.def Info: ../visualizations/corr.png  used on input line 256.
+(pdftex.def)             Requested size: 398.33858pt x 398.30135pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2]
+
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 27
+0.
+
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 270.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 272.
+LaTeX Font Info:    Font shape `T1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 5.0pt on input line 272.
+[3 <../visualizations/corr.png>]
+LaTeX Font Info:    Calculating math sizes for size <> on input line 296.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.7> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <0.5> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.7> not available
+(Font)              size <5> substituted on input line 296.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <0.5> not available
+(Font)              size <5> substituted on input line 296.
+
+
+Overfull \hbox (1.45699pt too wide) in paragraph at lines 344--345
 [][] 
  []
 
@@ -1368,23 +1430,64 @@ Overfull \hbox (3.34946pt too wide) in paragraph at lines 233--234
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
+LaTeX Warning: Citation 'hair2010' on page 4 undefined on input line 352.
+
+
+LaTeX Warning: Citation 'hair2010' on page 4 undefined on input line 359.
+
+
+LaTeX Warning: Citation 'hair2010' on page 4 undefined on input line 365.
+
+[4]
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2] [3] [4] [5] (./main.aux)
+[5]
+<../visualizations/base_model.png, id=91, 7903.5275pt x 7903.5275pt>
+File: ../visualizations/base_model.png Graphic file (type png)
+<use ../visualizations/base_model.png>
+Package pdftex.def Info: ../visualizations/base_model.png  used on input line 4
+60.
+(pdftex.def)             Requested size: 398.33858pt x 398.33508pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6] [7 <../visualizations/base_model.png>] [8] (./main.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 4.5pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 9C778FD3D0B856CE0ECD78BB006F1018;550.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36945 strings out of 478268
- 712944 string characters out of 5846348
- 1518725 words of memory out of 5000000
- 54472 multiletter control sequences out of 15000+600000
- 538610 words of font info for 122 fonts, out of 8000000 for 9000
+ 37114 strings out of 478268
+ 716524 string characters out of 5846348
+ 1530858 words of memory out of 5000000
+ 54572 multiletter control sequences out of 15000+600000
+ 566670 words of font info for 172 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,15n,131p,997b,5160s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{cite.0@li2016} has been referenced but does not exi
+st, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@brown2015} has been referenced but does not 
+exist, replaced by a fixed one
+
 
 pdfTeX warning (dest): name{cite.0@radler2014} has been referenced but does not
  exist, replaced by a fixed one
@@ -1397,14 +1500,20 @@ ist, replaced by a fixed one
 sr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr
 /local/texlive/2022/texmf-dist/fonts/type1/public/xcharter/XCharter-Bold.pfb></
 usr/local/texlive/2022/texmf-dist/fonts/type1/public/xcharter/XCharter-Roman.pf
-b></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb>
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></
-usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></us
-r/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb>
-Output written on main.pdf (6 pages, 164828 bytes).
+b></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9
+.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pf
+b></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
+/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/l
+ocal/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/loc
+al/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local
+/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb></usr/local/t
+exlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb>
+Output written on main.pdf (9 pages, 2838325 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
- 32826 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 172 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 42052 words of extra memory for PDF output out of 42996 (max. 10000000)
 

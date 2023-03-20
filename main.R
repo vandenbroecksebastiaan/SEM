@@ -654,35 +654,64 @@ data$C1SE1V[data$C1SE1V==8] = NA
 # -----------------------------------------------------------------------------
 
 data <- data[, c(depression_indicators_C,
-                 anxiety_indicators_C,
-                 stress_reactivity_indicators_C,
+                 # anxiety_indicators_C,
+                 # stress_reactivity_indicators_C,
                  harm_avoidance_indicators_C,
                  self_directedness_columns_C,
                  social_functioning_columns_C)]
 data <- na.omit(data)
+print("DIM DATA"); dim(data);
 
+# library(corrplot)
+# jpeg(file="visualizations/corr.png", width=30, height=30, units="cm", res=300)
+# corrplot(cor(data), method="color", type="lower")
+# dev.off()
 
-model <- "
+# efa.model = '
+#     efa("efa")*f1 + efa("efa")*f2 + efa("efa")*f3 +
+#     efa("efa")*f4 =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68
+#                      + C1PA69 + C1SE7V + C1SE7D + C1SE8 + C1SE9 +C1SE14O
+#                      + C1SE14P + C1SE14R + C1SE1BB + C1SE1D + C1SE1HH + C1SE1J
+#                      + C1SE1I + C1SE1P + C1SE1V
+# '
+# 
+# efa.fit <- cfa(efa.model, data=data)
+# summary(efa.fit, standardized=TRUE)
+
+# base.model <- "
+#     # measurement
+#     depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
+#     harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
+#     self_directedness =~ C1SE14O + C1SE14P + C1SE14R
+#     social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1I + C1SE1P + C1SE1V
+# 
+#     social_functioning~harm_avoidance+self_directedness
+#     depression~social_functioning
+# "
+# 
+# base.fit <- cfa(base.model, data=data, ordered=TRUE)
+# summary(base.fit, standardized=TRUE, fit.measures=TRUE)
+# modindices(base.fit, sort=TRUE, maximum.number=20)
+# 
+# jpeg(file="visualizations/base_model.png", width=50, height=50, units="cm", res=400)
+# semPaths(base.fit, what="diagram", whatLabels="stand", layout="tree", rotation=2,
+#          sizeMan=5, sizeMan2=3, sizeLat=10, sizeLat2=4, intercepts=FALSE,
+#          edge.color="black", thresholds=FALSE, label.scale=TRUE, asize=1.5,
+#          edge.label.cex=0.5, label.cex=1)
+# dev.off()
+
+improved.model <- "
     # measurement
     depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
-    # anxiety =~ C1PA88A + C1PA88B + C1PA88C + C1PA88D + C1PA88E + C1PA88F
-    #            + C1PA88G + C1PA88H + C1PA88I + C1PA88J + C1PA89
-    # stress_reactivity =~ C1SE7K + C1SE7W + C1SE7X
     harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
     self_directedness =~ C1SE14O + C1SE14P + C1SE14R
     social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1I + C1SE1P + C1SE1V
 
     social_functioning~harm_avoidance+self_directedness
     depression~social_functioning
+
+    C1SE1BB ~~ C1SE1D
 "
 
-fit <- cfa(model, data=data, ordered=TRUE)
-summary(fit, standardized=TRUE, fit.measures=TRUE)
-modindices(fit, sort=TRUE, maximum.number=20)
-
-jpeg(file="temp.png", width=50, height=50, units="cm", res=400)
-semPaths(fit, what="diagram", whatLabels="stand", layout="tree", rotation=2,
-         sizeMan=5, sizeMan2=3, sizeLat=10, sizeLat2=4, intercepts=FALSE,
-         edge.color="black", thresholds=FALSE, label.scale=TRUE, asize=1.5,
-         edge.label.cex=0.5, label.cex=1)
-dev.off()
+improved.fit <- cfa(improved.model, data=data, ordered=TRUE)
+summary(improved.fit, standardized=TRUE, fit.measures=TRUE)

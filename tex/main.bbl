@@ -127,6 +127,90 @@
       \verb http://openhealthdata.metajnl.com/articles/10.5334/ohd.ai/
       \endverb
     \endentry
+    \entry{brown2015}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6b70d138728f920888eae40d0cc016d7}{%
+           family={Brown},
+           familyi={B\bibinitperiod},
+           given={Timothy\bibnamedelima A.},
+           giveni={T\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, US}%
+      }
+      \list{publisher}{1}{%
+        {The Guilford Press}%
+      }
+      \strng{namehash}{6b70d138728f920888eae40d0cc016d7}
+      \strng{fullhash}{6b70d138728f920888eae40d0cc016d7}
+      \strng{bibnamehash}{6b70d138728f920888eae40d0cc016d7}
+      \strng{authorbibnamehash}{6b70d138728f920888eae40d0cc016d7}
+      \strng{authornamehash}{6b70d138728f920888eae40d0cc016d7}
+      \strng{authorfullhash}{6b70d138728f920888eae40d0cc016d7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-4625-1779-4 (Hardcover); 978-1-4625-1536-3 (Paperback); 978-1-4625-1781-7 (Digital (undefined format))}
+      \field{note}{Pages: xvii, 462}
+      \field{series}{Confirmatory factor analysis for applied research, 2nd ed.}
+      \field{title}{Confirmatory factor analysis for applied research, 2nd ed.}
+      \field{year}{2015}
+      \keyw{*Factor Analysis,*Factor Structure,*Mathematical Modeling,*Methodology,Applied Psychology,Computer Software,Confirmatory Factor Analysis,Latent Variables}
+    \endentry
+    \entry{li2016}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f80a6d59a789151c8707c6f541a0e1a2}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Cheng-Hsien},
+           giveni={C\bibinithyphendelim H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{f80a6d59a789151c8707c6f541a0e1a2}
+      \strng{fullhash}{f80a6d59a789151c8707c6f541a0e1a2}
+      \strng{bibnamehash}{f80a6d59a789151c8707c6f541a0e1a2}
+      \strng{authorbibnamehash}{f80a6d59a789151c8707c6f541a0e1a2}
+      \strng{authornamehash}{f80a6d59a789151c8707c6f541a0e1a2}
+      \strng{authorfullhash}{f80a6d59a789151c8707c6f541a0e1a2}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{1554-3528}
+      \field{journaltitle}{Behavior Research Methods}
+      \field{month}{9}
+      \field{number}{3}
+      \field{shorttitle}{Confirmatory factor analysis with ordinal data}
+      \field{title}{Confirmatory factor analysis with ordinal data: {Comparing} robust maximum likelihood and diagonally weighted least squares}
+      \field{urlday}{19}
+      \field{urlmonth}{3}
+      \field{urlyear}{2023}
+      \field{volume}{48}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \field{pages}{936\bibrangedash 949}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.3758/s13428-015-0619-7
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.3758/s13428-015-0619-7
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.3758/s13428-015-0619-7
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
