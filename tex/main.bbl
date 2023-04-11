@@ -98,8 +98,8 @@
       \strng{authorbibnamehash}{a6f355e07fa80e57918a3296baf91f33}
       \strng{authornamehash}{a6f355e07fa80e57918a3296baf91f33}
       \strng{authorfullhash}{a6f355e07fa80e57918a3296baf91f33}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \true{uniqueprimaryauthor}
@@ -148,8 +148,8 @@
       \strng{authorbibnamehash}{6b70d138728f920888eae40d0cc016d7}
       \strng{authornamehash}{6b70d138728f920888eae40d0cc016d7}
       \strng{authorfullhash}{6b70d138728f920888eae40d0cc016d7}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \true{uniqueprimaryauthor}
@@ -161,6 +161,108 @@
       \field{title}{Confirmatory factor analysis for applied research, 2nd ed.}
       \field{year}{2015}
       \keyw{*Factor Analysis,*Factor Structure,*Mathematical Modeling,*Methodology,Applied Psychology,Computer Software,Confirmatory Factor Analysis,Latent Variables}
+    \endentry
+    \entry{joreskog1994}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1f1aee4354599dea3ab95ecf7f798510}{%
+           family={Jöreskog},
+           familyi={J\bibinitperiod},
+           given={Karl\bibnamedelima G.},
+           giveni={K\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{1f1aee4354599dea3ab95ecf7f798510}
+      \strng{fullhash}{1f1aee4354599dea3ab95ecf7f798510}
+      \strng{bibnamehash}{1f1aee4354599dea3ab95ecf7f798510}
+      \strng{authorbibnamehash}{1f1aee4354599dea3ab95ecf7f798510}
+      \strng{authornamehash}{1f1aee4354599dea3ab95ecf7f798510}
+      \strng{authorfullhash}{1f1aee4354599dea3ab95ecf7f798510}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0033-3123, 1860-0980}
+      \field{journaltitle}{Psychometrika}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{On the estimation of polychoric correlations and their asymptotic covariance matrix}
+      \field{urlday}{4}
+      \field{urlmonth}{4}
+      \field{urlyear}{2023}
+      \field{volume}{59}
+      \field{year}{1994}
+      \field{urldateera}{ce}
+      \field{pages}{381\bibrangedash 389}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1007/BF02296131
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/BF02296131
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/BF02296131
+      \endverb
+    \endentry
+    \entry{yangwallentin2010}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8b5f6f048c9bfc1da7d65ce97d9c7955}{%
+           family={Yang-Wallentin},
+           familyi={Y\bibinithyphendelim W\bibinitperiod},
+           given={Fan},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d42b043aa0bc499828132dcf2689af47}{%
+           family={Joreskog},
+           familyi={J\bibinitperiod},
+           given={Karl},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=82ec79161c60e4d6262d1fc2647c09e6}{%
+           family={Luo},
+           familyi={L\bibinitperiod},
+           given={Hao},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{37c79709cf589d4b414960bd9a971eab}
+      \strng{fullhash}{101b44e14149cc23fecf8f706bf26f70}
+      \strng{bibnamehash}{101b44e14149cc23fecf8f706bf26f70}
+      \strng{authorbibnamehash}{101b44e14149cc23fecf8f706bf26f70}
+      \strng{authornamehash}{37c79709cf589d4b414960bd9a971eab}
+      \strng{authorfullhash}{101b44e14149cc23fecf8f706bf26f70}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1070-5511}
+      \field{journaltitle}{Structural Equation Modeling: A Multidisciplinary Journal}
+      \field{month}{7}
+      \field{number}{3}
+      \field{title}{Confirmatory {Factor} {Analysis} of {Ordinal} {Variables} {With} {Misspecified} {Models}}
+      \field{urlday}{4}
+      \field{urlmonth}{4}
+      \field{urlyear}{2023}
+      \field{volume}{17}
+      \field{year}{2010}
+      \field{urldateera}{ce}
+      \field{pages}{392\bibrangedash 423}
+      \range{pages}{32}
+      \verb{doi}
+      \verb 10.1080/10705511.2010.489003
+      \endverb
     \endentry
     \entry{li2016}{article}{}
       \name{author}{1}{}{%
@@ -180,8 +282,8 @@
       \strng{authorbibnamehash}{f80a6d59a789151c8707c6f541a0e1a2}
       \strng{authornamehash}{f80a6d59a789151c8707c6f541a0e1a2}
       \strng{authorfullhash}{f80a6d59a789151c8707c6f541a0e1a2}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \true{uniqueprimaryauthor}
@@ -209,6 +311,150 @@
       \endverb
       \verb{url}
       \verb http://link.springer.com/10.3758/s13428-015-0619-7
+      \endverb
+    \endentry
+    \entry{simsek2012}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7e10d3577e30b1f19e96572a7eebcd6c}{%
+           family={Şimşek},
+           familyi={Ş\bibinitperiod},
+           given={Gülhayat\bibnamedelima Gölbaşı},
+           giveni={G\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e142782bab86e74d8b2c614fe0143fef}{%
+           family={Noyan},
+           familyi={N\bibinitperiod},
+           given={Fatma},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{54c77b1c087c81e49426095e1bad2a10}
+      \strng{fullhash}{54c77b1c087c81e49426095e1bad2a10}
+      \strng{bibnamehash}{54c77b1c087c81e49426095e1bad2a10}
+      \strng{authorbibnamehash}{54c77b1c087c81e49426095e1bad2a10}
+      \strng{authornamehash}{54c77b1c087c81e49426095e1bad2a10}
+      \strng{authorfullhash}{54c77b1c087c81e49426095e1bad2a10}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0033-5177, 1573-7845}
+      \field{journaltitle}{Quality \& Quantity}
+      \field{month}{8}
+      \field{number}{5}
+      \field{shorttitle}{Structural equation modeling with ordinal variables}
+      \field{title}{Structural equation modeling with ordinal variables: a large sample case study}
+      \field{urlday}{23}
+      \field{urlmonth}{3}
+      \field{urlyear}{2023}
+      \field{volume}{46}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \field{pages}{1571\bibrangedash 1581}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1007/s11135-011-9467-4
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s11135-011-9467-4
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s11135-011-9467-4
+      \endverb
+    \endentry
+    \entry{hair2010}{book}{}
+      \name{editor}{1}{}{%
+        {{un=0,uniquepart=base,hash=cca3092feebd7c8564a57e0696c6d946}{%
+           family={Hair},
+           familyi={H\bibinitperiod},
+           given={Joseph\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Upper Saddle River, NJ}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{cca3092feebd7c8564a57e0696c6d946}
+      \strng{fullhash}{cca3092feebd7c8564a57e0696c6d946}
+      \strng{bibnamehash}{cca3092feebd7c8564a57e0696c6d946}
+      \strng{editorbibnamehash}{cca3092feebd7c8564a57e0696c6d946}
+      \strng{editornamehash}{cca3092feebd7c8564a57e0696c6d946}
+      \strng{editorfullhash}{cca3092feebd7c8564a57e0696c6d946}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{editor}
+      \field{labeltitlesource}{title}
+      \field{edition}{7th ed}
+      \field{isbn}{978-0-13-813263-7 978-0-13-813231-6}
+      \field{note}{OCLC: ocn227921762}
+      \field{title}{Multivariate data analysis}
+      \field{year}{2010}
+      \keyw{Multivariate analysis}
+    \endentry
+    \entry{shi2020}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=94558a4f8a22da8960c6189351038fbe}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Dexin},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1864bed0dc1578554f7d6a9aaf4eb6b0}{%
+           family={Maydeu-Olivares},
+           familyi={M\bibinithyphendelim O\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{f07df2fce314de527cc822eddfac3689}
+      \strng{fullhash}{f07df2fce314de527cc822eddfac3689}
+      \strng{bibnamehash}{f07df2fce314de527cc822eddfac3689}
+      \strng{authorbibnamehash}{f07df2fce314de527cc822eddfac3689}
+      \strng{authornamehash}{f07df2fce314de527cc822eddfac3689}
+      \strng{authorfullhash}{f07df2fce314de527cc822eddfac3689}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0013-1644, 1552-3888}
+      \field{journaltitle}{Educational and Psychological Measurement}
+      \field{month}{6}
+      \field{number}{3}
+      \field{title}{The {Effect} of {Estimation} {Methods} on {SEM} {Fit} {Indices}}
+      \field{urlday}{21}
+      \field{urlmonth}{3}
+      \field{urlyear}{2023}
+      \field{volume}{80}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \field{pages}{421\bibrangedash 445}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1177/0013164419885164
+      \endverb
+      \verb{urlraw}
+      \verb http://journals.sagepub.com/doi/10.1177/0013164419885164
+      \endverb
+      \verb{url}
+      \verb http://journals.sagepub.com/doi/10.1177/0013164419885164
       \endverb
     \endentry
   \enddatalist

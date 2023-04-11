@@ -1,17 +1,18 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[33] biber:340> INFO - === Sun Mar 19, 2023, 15:33:10
-[41] Biber.pm:418> INFO - Reading 'main.bcf'
-[79] Biber.pm:972> INFO - Found 4 citekeys in bib section 0
-[86] Biber.pm:4383> INFO - Processing section 0
-[91] Biber.pm:4574> INFO - Looking for bibtex file 'library.bib' for section 0
-[92] bibtex.pm:1713> INFO - LaTeX decoding ...
-[96] bibtex.pm:1518> INFO - Found BibTeX data source 'library.bib'
-[129] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[129] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[129] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[129] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[133] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[135] bbl.pm:757> INFO - Output to main.bbl
-[135] Biber.pm:130> WARN - ISBN '978-1-4625-1779-4 (Hardcover); 978-1-4625-1536-3 (Paperback); 978-1-4625-1781-7 (Digital (undefined format))' in entry 'brown2015' is invalid - run biber with '--validate_datamodel' for details.
-[135] Biber.pm:132> INFO - WARNINGS: 1
+[32] biber:340> INFO - === Tue Apr 11, 2023, 11:13:59
+[42] Biber.pm:418> INFO - Reading 'main.bcf'
+[80] Biber.pm:972> INFO - Found 9 citekeys in bib section 0
+[88] Biber.pm:4383> INFO - Processing section 0
+[93] Biber.pm:4574> INFO - Looking for bibtex file 'library.bib' for section 0
+[94] bibtex.pm:1713> INFO - LaTeX decoding ...
+[102] bibtex.pm:1518> INFO - Found BibTeX data source 'library.bib'
+[147] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[147] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[147] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[147] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[152] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[156] bbl.pm:757> INFO - Output to main.bbl
+[156] Biber.pm:130> WARN - ISBN '978-1-4625-1779-4 (Hardcover); 978-1-4625-1536-3 (Paperback); 978-1-4625-1781-7 (Digital (undefined format))' in entry 'brown2015' is invalid - run biber with '--validate_datamodel' for details.
+[156] Biber.pm:130> WARN - ISBN '978-0-13-813263-7 978-0-13-813231-6' in entry 'hair2010' is invalid - run biber with '--validate_datamodel' for details.
+[156] Biber.pm:132> INFO - WARNINGS: 2

@@ -33,9 +33,9 @@ self_directedness_columns_B <- c("B1SE12O", "B1SE12P", "B1SE12R")
 self_directedness_columns_C <- c("C1SE14O", "C1SE14P", "C1SE14R")
 
 social_functioning_columns_B <- c("B1SE1BB", "B1SE1D", "B1SE1HH", "B1SE1J",
-                                  "B1SE1I", "B1SE1P","B1SE1V")
+                                  "B1SE1I", "B1SE1P", "B1SE1V")
 social_functioning_columns_C <- c("C1SE1BB", "C1SE1D", "C1SE1HH", "C1SE1J",
-                                  "C1SE1I", "C1SE1P","C1SE1V")
+                                  "C1SE1I", "C1SE1P", "C1SE1V")
 
 
 data_B <- data_B[, c(depression_indicators_B,
@@ -43,16 +43,20 @@ data_B <- data_B[, c(depression_indicators_B,
                      stress_reactivity_indicators_B,
                      harm_avoidance_indicators_B,
                      self_directedness_columns_B,
-                     social_functioning_columns_B)]
+                     social_functioning_columns_B,
+                     "M2FAMNUM")]
 data_C <- data_C[, c(depression_indicators_C,
                      anxiety_indicators_C,
                      stress_reactivity_indicators_C,
                      harm_avoidance_indicators_C,
                      self_directedness_columns_C,
-                     social_functioning_columns_C)]
+                     social_functioning_columns_C,
+                     "M2FAMNUM")]
 
 colnames(data_B) <- colnames(data_C)
 data <- rbind(data_B, data_C)
+
+print(colnames(data))
 
 # ----------
 # Depression
@@ -654,13 +658,83 @@ data$C1SE1V[data$C1SE1V==8] = NA
 # -----------------------------------------------------------------------------
 
 data <- data[, c(depression_indicators_C,
-                 # anxiety_indicators_C,
-                 # stress_reactivity_indicators_C,
                  harm_avoidance_indicators_C,
                  self_directedness_columns_C,
-                 social_functioning_columns_C)]
+                 social_functioning_columns_C,
+                 "M2FAMNUM")]
 data <- na.omit(data)
 print("DIM DATA"); dim(data);
+
+# --- Depression
+# table(data$C1PA63)
+#   0   1 
+# 126 479 
+# table(data$C1PA64)
+#   0   1 
+#  51 554 
+# table(data$C1PA65)
+#   0   1 
+# 263 342 
+# table(data$C1PA66)
+#   0   1 
+# 172 433 
+# table(data$C1PA67)
+#   0   1 
+#  88 517 
+# table(data$C1PA68)
+#   0   1 
+# 222 383 
+# table(data$C1PA69)
+#   0   1 
+# 229 376 
+
+# --- Harm avoidance
+# table(data$C1SE7V)
+#   1   2   3   4 
+#  33  92  91 389 
+# table(data$C1SE7D)
+#   1   2   3   4 
+#  25  79  69 432 
+# table(data$C1SE8)
+#   0   1 
+# 335 270 
+# table(data$C1SE9)
+#   0   1 
+# 276 329 
+
+# --- Self-directedness
+# table(data$C1SE14O)
+#   1   2   3   4 
+#  48 140 241 176 
+# table(data$C1SE14P)
+#   1   2   3   4 
+#  67 144 235 159 
+# table(data$C1SE14R)
+#   1   2   3   4 
+#  47 149 228 181
+
+# --- Social functioning
+# table(data$C1SE1BB)
+#   1   2   3   4   5   6   7 
+#   4   7  16  36  70 207 265 
+# table(data$C1SE1D)
+#   1   2   3   4   5   6   7 
+#   5  14  23  68  74 225 196 
+# table(data$C1SE1HH)
+#   1   2   3   4   5   6   7 
+#  75  71  69  34  51 113 192 
+# table(data$C1SE1J)
+#   1   2   3   4   5   6   7 
+#  67  88 106  57  52  94 141 
+# table(data$C1SE1I)
+#   1   2   3   4   5   6   7 
+#   7  13  14  57 124 175 215 
+# table(data$C1SE1P)
+#   1   2   3   4   5   6   7 
+#  71  82  80  51  50 103 168 
+# table(data$C1SE1V)
+#   1   2   3   4   5   6   7 
+#  14  14  17  26  82 159 293 
 
 # library(corrplot)
 # jpeg(file="visualizations/corr.png", width=30, height=30, units="cm", res=300)
@@ -678,7 +752,31 @@ print("DIM DATA"); dim(data);
 # efa.fit <- cfa(efa.model, data=data)
 # summary(efa.fit, standardized=TRUE)
 
-# base.model <- "
+base.model <- "
+    # measurement
+    depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
+    harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
+    self_directedness =~ C1SE14O + C1SE14P + C1SE14R
+    social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1I + C1SE1P + C1SE1V
+
+    # structural
+    social_functioning~harm_avoidance+self_directedness
+    depression~social_functioning
+    depression~self_directedness
+"
+
+base.fit <- sem(base.model, data=data, ordered=TRUE, cluster="M2FAMNUM")
+summary(base.fit, standardized=TRUE, fit.measures=TRUE)
+modindices(base.fit, sort=TRUE, maximum.number=20)
+# 
+# jpeg(file="visualizations/base_model.png", width=50, height=50, units="cm", res=400)
+# semPaths(base.fit, what="diagram", whatLabels="stand", layout="tree2", rotation=2,
+#          sizeMan=5, sizeMan2=3, sizeLat=10, sizeLat2=4, intercepts=FALSE,
+#          edge.color="black", thresholds=FALSE, label.scale=TRUE, asize=1.5,
+#          edge.label.cex=0.5, label.cex=1)
+# dev.off()
+
+# improved.model <- "
 #     # measurement
 #     depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
 #     harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
@@ -687,31 +785,42 @@ print("DIM DATA"); dim(data);
 # 
 #     social_functioning~harm_avoidance+self_directedness
 #     depression~social_functioning
+#     depression~harm_avoidance
+#     depression~self_directedness
+# 
+#     C1SE1BB ~~ C1SE1D
+#     C1SE1HH ~~ C1SE1J
+#     C1SE1HH ~~ C1SE1BB
+#     C1SE1HH ~~ C1SE1P
 # "
 # 
-# base.fit <- cfa(base.model, data=data, ordered=TRUE)
-# summary(base.fit, standardized=TRUE, fit.measures=TRUE)
-# modindices(base.fit, sort=TRUE, maximum.number=20)
+# improved.fit <- cfa(improved.model, data=data, ordered=TRUE)
+# summary(improved.fit, standardized=TRUE, fit.measures=TRUE)
+# modindices(improved.fit, sort=TRUE, maximum.number=20)
 # 
-# jpeg(file="visualizations/base_model.png", width=50, height=50, units="cm", res=400)
-# semPaths(base.fit, what="diagram", whatLabels="stand", layout="tree", rotation=2,
+# jpeg(file="visualizations/improved_model.png", width=50, height=50, units="cm", res=400)
+# semPaths(improved.fit, what="diagram", whatLabels="stand", layout="tree2", rotation=2,
 #          sizeMan=5, sizeMan2=3, sizeLat=10, sizeLat2=4, intercepts=FALSE,
 #          edge.color="black", thresholds=FALSE, label.scale=TRUE, asize=1.5,
 #          edge.label.cex=0.5, label.cex=1)
 # dev.off()
 
-improved.model <- "
-    # measurement
-    depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
-    harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
-    self_directedness =~ C1SE14O + C1SE14P + C1SE14R
-    social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1I + C1SE1P + C1SE1V
-
-    social_functioning~harm_avoidance+self_directedness
-    depression~social_functioning
-
-    C1SE1BB ~~ C1SE1D
-"
-
-improved.fit <- cfa(improved.model, data=data, ordered=TRUE)
-summary(improved.fit, standardized=TRUE, fit.measures=TRUE)
+# improved2.model <- "
+#     # measurement
+#     depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
+#     harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
+#     self_directedness =~ C1SE14O + C1SE14P + C1SE14R
+#     social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1I + C1SE1P + C1SE1V
+# 
+#     # structural
+#     depression~social_functioning+harm_avoidance+self_directedness
+# 
+#     C1SE1BB ~~ C1SE1D
+#     C1SE1HH ~~ C1SE1J
+#     C1SE1HH ~~ C1SE1BB
+#     C1SE1HH ~~ C1SE1P
+# "
+# 
+# improved2.fit <- cfa(improved2.model, data=data, ordered=TRUE)
+# summary(improved2.fit, standardized=TRUE, fit.measures=TRUE)
+# modindices(improved2.fit, sort=TRUE, maximum.number=20)
