@@ -19,6 +19,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{subcaption}
+\usepackage{blkarray}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -246,7 +247,7 @@ harm.
 \multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{2}{l|}{\textbf{Count}}          \\ \cline{3-4} 
                                     &                                & \multicolumn{1}{l|}{\textbf{0 (harm)}} & \textbf{1 (no harm)} \\ \hline
 \multirow{2}{*}{Harm avoidance}     & SE8                            & \multicolumn{1}{l|}{335}                  & 270       \\ \cline{2-4} 
-                                    & SE7V                           & \multicolumn{1}{l|}{276}                  & 329       \\ \hline
+                                    & SE9                            & \multicolumn{1}{l|}{276}                  & 329       \\ \hline
 \end{tabular}
 }
 \end{minipage}
@@ -399,64 +400,87 @@ To that end, the scale of the first indicator of every latent variable has been
 fixed to one. The model contains 85 parameters that should be estimated.
 Specifically, there are 16 ($=20 - 4$) loadings, 4 regression parameters, 60
 thresholds (more on this later), 1 latent covariance and 4 latent variances.
-The degrees of freedom of the model therefore equals 20*21/2 - 85 = 210 - 85
-= 125. However, Lavaan reports that the degrees of freedom equals 165. Honestly,
-I don't know why this is the case. I have tried to find an explanation in the
-documentation of Lavaan, but I have not been able to find one.
+I believe that the degrees of freedom of the model therefore equals $20*21/2 - 85
+= 210 - 85 = 125$. However, Lavaan reports that the degrees of freedom equals
+I have not yet been able to find an explanation for this.
 % 20*23/2-85 = 230-85 = 145
 % 20*25/2-85 = 250-85 = 165
-Next, the following assumptions have been made on the equations shown
-in \ref{eq:base_model}. The measurement errors $\delta$ are supposed to have an
-expected value of 0. It is assumed that they have constant variance across
-observations and are mutually uncorrelated. There should be a covariance of zero
-between these errors and the latent variables.
+
+% Next, the following assumptions have been made on the equations shown
+% in \ref{eq:base_model}. The measurement errors $\delta$ are supposed to have an
+% expected value of 0. It is assumed that they have constant variance across
+% observations and are mutually uncorrelated. There should be a covariance of
+% zero between these errors and the latent variables.
+
+The structural equation model can be summarized using the following equations.
+First, the measurement model:
 
 \begin{equation}
-    \footnotesize
-    \label{eq:base_model}
-    \begin{cases}
-    \textrm{PA63}  & = \lambda_{11} \textrm{depression}         + \theta_{11} \\
-    \textrm{PA64}  & = \lambda_{12} \textrm{depression}         + \theta_{12} \\
-    \textrm{PA65}  & = \lambda_{13} \textrm{depression}         + \theta_{13} \\
-    \textrm{PA66}  & = \lambda_{14} \textrm{depression}         + \theta_{14} \\
-    \textrm{PA67}  & = \lambda_{15} \textrm{depression}         + \theta_{15} \\
-    \textrm{PA68}  & = \lambda_{16} \textrm{depression}         + \theta_{16} \\
-    \textrm{PA69}  & = \lambda_{17} \textrm{depression}         + \theta_{17} \\
-    \textrm{SE7V}  & = \lambda_{21} \textrm{harm avoidance}     + \theta_{21} \\
-    \textrm{SE7D}  & = \lambda_{22} \textrm{harm avoidance}     + \theta_{22} \\
-    \textrm{SE8}   & = \lambda_{23} \textrm{harm avoidance}     + \theta_{23} \\
-    \textrm{SE9}   & = \lambda_{24} \textrm{harm avoidance}     + \theta_{24} \\
-    \textrm{SE14O} & = \lambda_{31} \textrm{self-directedness}  + \theta_{31} \\
-    \textrm{SE14P} & = \lambda_{32} \textrm{self-directedness}  + \theta_{32} \\
-    \textrm{SE14R} & = \lambda_{33} \textrm{self-directedness}  + \theta_{33} \\
-    \textrm{SE1BB} & = \lambda_{41} \textrm{social functioning} + \theta_{41} \\
-    \textrm{SE1D}  & = \lambda_{42} \textrm{social functioning} + \theta_{42} \\
-    \textrm{SE1HH} & = \lambda_{43} \textrm{social functioning} + \theta_{43} \\
-    \textrm{SE1J}  & = \lambda_{44} \textrm{social functioning} + \theta_{44} \\
-    \textrm{SE1P}  & = \lambda_{45} \textrm{social functioning} + \theta_{45} \\
-    \textrm{SE1V}  & = \lambda_{46} \textrm{social functioning} + \theta_{46} \\
-    \textrm{social functioning} & = \beta_1 \textrm{harm avoidance} + \beta_2 \textrm{self-directedness} + \psi_1 \\
-    \textrm{depression} & = \beta_3 \textrm{social functioning} + \beta_4 \textrm{self-directedness} + \psi_2
-    \end{cases}
-    \iff
-    \begin{cases}
-      \underset{n \times n}{\pmb{x}} = \underset{n \times p}{\pmb{\Lambda}} \underset{?}{\pmb{\xi}} + \underset{n \times n}{\pmb{\theta}} \\
-      \underset{p \times p}{\pmb{y}} = \underset{p \times p}{\pmb{\beta}} \underset{?}{\pmb{\xi}} + \underset{p \times p}{\pmb{\psi}} \\
-      
-      \pmb{\theta} \sim \mathcal{N} (0, \Sigma_{\pmb{\theta}}) \\
-      \pmb{\psi} \sim \mathcal{N} (0, \Sigma_{\pmb{\psi}}) \\
-      
-      n = 20 \hfill \text{(number of variables)}        \\
-      p = 4  \hfill \text{(number of latent variables)} \\
-
-    \end{cases}
+  \small
+  \label{eq:measurement_model}
+  \begin{cases}
+    \textrm{PA63}  & = \lambda_{y_{1,1}}  \textrm{depression}         + \epsilon_1  \\
+    \textrm{PA64}  & = \lambda_{y_{2,1}}  \textrm{depression}         + \epsilon_2  \\
+    \textrm{PA65}  & = \lambda_{y_{3,1}}  \textrm{depression}         + \epsilon_3  \\
+    \textrm{PA66}  & = \lambda_{y_{4,1}}  \textrm{depression}         + \epsilon_4  \\
+    \textrm{PA67}  & = \lambda_{y_{5,1}}  \textrm{depression}         + \epsilon_5  \\
+    \textrm{PA68}  & = \lambda_{y_{6,1}}  \textrm{depression}         + \epsilon_6  \\
+    \textrm{PA69}  & = \lambda_{y_{7,1}}  \textrm{depression}         + \epsilon_7  \\
+    \textrm{SE1BB} & = \lambda_{y_{8,2}}  \textrm{social functioning} + \epsilon_8  \\
+    \textrm{SE1D}  & = \lambda_{y_{9,2}}  \textrm{social functioning} + \epsilon_9  \\
+    \textrm{SE1HH} & = \lambda_{y_{10,2}} \textrm{social functioning} + \epsilon_{10} \\
+    \textrm{SE1J}  & = \lambda_{y_{11,2}} \textrm{social functioning} + \epsilon_{11} \\
+    \textrm{SE1P}  & = \lambda_{y_{12,2}} \textrm{social functioning} + \epsilon_{12} \\
+    \textrm{SE1V}  & = \lambda_{y_{13,2}} \textrm{social functioning} + \epsilon_{13} \\
+    %
+    \textrm{SE7V}  & = \lambda_{x_{1,1}} \textrm{harm avoidance}     + \delta_1 \\
+    \textrm{SE7D}  & = \lambda_{x_{2,1}} \textrm{harm avoidance}     + \delta_2 \\
+    \textrm{SE8}   & = \lambda_{x_{3,1}} \textrm{harm avoidance}     + \delta_3 \\
+    \textrm{SE9}   & = \lambda_{x_{4,1}} \textrm{harm avoidance}     + \delta_4 \\
+    \textrm{SE14O} & = \lambda_{x_{1,2}} \textrm{self-directedness}  + \delta_5 \\
+    \textrm{SE14P} & = \lambda_{x_{2,3}} \textrm{self-directedness}  + \delta_6 \\
+    \textrm{SE14R} & = \lambda_{x_{3,4}} \textrm{self-directedness}  + \delta_7 \\
+  \end{cases}
+  \iff
+  \begin{cases}
+    \underset{p \times 1}{y} = \underset{p \times m}{\lambda_y} \overset{m \times 1}{\eta} + \underset{p \times 1}{\epsilon} \\
+    \underset{q \times 1}{x} = \underset{q \times n}{\lambda_x} \overset{n \times 1}{\xi}  + \underset{q \times 1}{\delta} \\
+    \epsilon \sim \mathcal{N}(0, \Sigma_\epsilon) \\
+    \delta \sim \mathcal{N}(0, \Sigma_\delta) \\
+  \end{cases}
 \end{equation}
 
+Hence, $y$ and $x$ contain indicators that form the dependent and independent
+latent variables. The loadings have been put together to form $\lambda_y$ and
+$\lambda_x$. $\epsilon$ and $\delta$ are vectors that hold the error terms, on
+which there are some assumptions. $p$ and $q$ are the number of items for the
+observed dependent and independent latent variables. Finally, $m$ and $n$ are
+the number of dependent and independent latent variables.
+
+Then, $\xi$ and $\eta$ are used to link the measurement model to the structural
+model:
+
+\begin{equation}
+  \small
+  \label{eq:structural_model}
+  \begin{cases}
+    \textrm{social functioning} & = \gamma_{2,1} \textrm{harm avoidance}     + \gamma_{2,2} \textrm{self-directedness} + \zeta_1 \\
+    \textrm{depression}         & = \beta_{1,2}  \textrm{social functioning} + \gamma_{1,2} \textrm{self-directedness} + \zeta_2 \\
+  \end{cases}
+  \iff
+    \underset{m \times 1}{\eta} = \underset{m \times m}{\beta} \overset{m \times 1}{\eta}
+                                  + \underset{n \times n}{\gamma} \overset{n \times 1}{\xi}
+                                  + \underset{m \times 1}{\zeta} \\
+\end{equation}
+
+where $\beta$ and $\gamma$ are the coefficients of the structural model and
+$\zeta$ contains the error terms.
 
 % TODO: add thing about software
 
 A considerable problem arises when one considers the assumption of multivariate
-normality on the residuals $\pmb{\theta}$. All observed variables are ordinal in
+normality on the residuals of the measurement model. All observed variables are
+ordinal in
 nature, meaning that they are not continuous and should not be treated as such.
 Their means and (co)variances have no meaning, since they do not have origins or
 units of measurement (\cite{joreskog1994}). The standard maximum likelihood
@@ -529,7 +553,7 @@ model <- "
     TE := c + (a*b) 
 "
 
-fit <- sem(sem, data=data, ordered=TRUE, meanstructure=FALSE,
+fit <- sem(model, data=data, ordered=TRUE, meanstructure=FALSE,
            estimator="DWLS")
 summary(sem, standardized=TRUE, fit.measures=TRUE)
 modindices(sem, sort=TRUE, maximum.number=20)
@@ -1156,63 +1180,70 @@ therefore made it \href{https://github.com/vandenbroecksebastiaan/SEM/}{availabl
 
 \subsection{(Fully standardized) matrices}
 
-\begin{minipage}{0.35\linewidth}
-  \begin{equation*}
-    \pmb{\lambda} = 
-      \begin{pmatrix}
-      0.850           & 0	              & 0	                & 0           \\
-      0.536	          & 0	              & 0	                & 0           \\
-      0.168	          & 0	              & 0	                & 0           \\
-      0.061	          & 0	              & 0	                & 0           \\
-      0.548	          & 0	              & 0	                & 0           \\
-      0.757	          & 0	              & 0	                & 0           \\
-      0.306	          & 0	              & 0	                & 0           \\
-      0	              & 0.602	          & 0	                & 0           \\
-      0	              & 0.724	          & 0	                & 0           \\
-      0	              & 0.719	          & 0	                & 0           \\
-      0	              & 0.446	          & 0	                & 0           \\
-      0	              & 0	              & 0.821	            & 0           \\
-      0	              & 0	              & 0.807	            & 0           \\
-      0	              & 0	              & 0.699	            & 0           \\
-      0	              & 0	              & 0	                & 0.564       \\
-      0	              & 0	              & 0	                & 0.539       \\
-      0	              & 0	              & 0	                & 0.788       \\
-      0	              & 0	              & 0	                & 0.759       \\
-      0	              & 0	              & 0	                & 0.746       \\
-      0	              & 0	              & 0	                & 0.628       
-      \end{pmatrix}
-  \end{equation*}
+\begin{minipage}{0.32\linewidth}
+\[
+\lambda_y = 
+\begin{blockarray}{ccc}
+\rotatebox[]{90}{\textrm{\:\:Depr.}} & \rotatebox[]{90}{\textrm{\:\:Soc. f.}} \\
+\begin{block}{(cc)c}
+      0.850 & 0     & \textrm{PA63} \\
+      0.536	& 0     & \textrm{PA64} \\
+      0.168	& 0     & \textrm{PA65} \\
+      0.061	& 0     & \textrm{PA66} \\
+      0.548	& 0     & \textrm{PA67} \\
+      0.757	& 0     & \textrm{PA68} \\
+      0.306	& 0     & \textrm{PA69} \\
+      0	    & 0.564 & \textrm{SE1BB} \\
+      0	    & 0.539 & \textrm{SE1D} \\
+      0	    & 0.788 & \textrm{SE1HH} \\
+      0	    & 0.759 & \textrm{SE1J} \\
+      0	    & 0.746 & \textrm{SE1P} \\
+      0	    & 0.628 & \textrm{SE1V} \\ 
+\end{block}
+\end{blockarray}
+\]
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\[
+\lambda_x = 
+\begin{blockarray}{ccc}
+\rotatebox[]{90}{\textrm{\:\:Harm. av.}} & \rotatebox[]{90}{\textrm{\:\:S. direct.}} & \\
+\begin{block}{(cc)c}
+  0.602 & 0     & \textrm{SE7D} \\
+  0.724 & 0     & \textrm{SE7V} \\
+  0.719 & 0     & \textrm{SE8} \\
+  0.446 & 0     & \textrm{SE9} \\
+  0     & 0.821 & \textrm{SE14O} \\
+  0     & 0.807 & \textrm{SE14R} \\
+  0     & 0.699 & \textrm{SE14P} \\
+\end{block}
+\end{blockarray}
+\]
 \end{minipage}
 
-\begin{minipage}{0.76\linewidth}
-\begin{align*}
-\pmb{\theta} = \textrm{diag}(& 0.278, 0.713, 0.972, 0.996, 0.699, 0.428, 0.906, 0.637 ,0.475, 0.482, \\
-                             & 0.801, 0.325, 0.349, 0.512, 0.682, 0.709, 0.379, 0.425, 0.444, 0.606)
-\end{align*}
+\begin{minipage}{0.26\linewidth}
+\[
+\beta = 
+\begin{blockarray}{ccc}
+\rotatebox[]{90}{\textrm{\:\:Depr.}} & \rotatebox[]{90}{\textrm{\:\:Soc. f.}} & \\
+\begin{block}{(cc)c}
+  0     & 0.136 & \textrm{Depr.} \\
+  0     & 0     & \textrm{Soc. f.} \\
+\end{block}
+\end{blockarray}
+\]
 \end{minipage}
-
-\begin{minipage}{0.33\linewidth}
-  \begin{equation*}
-    \pmb{\psi} = 
-      \begin{pmatrix}
-      0.737 &  0     &  0     & 0     \\
-      0     &  1     &  0     & 0     \\
-      0     & -0.107 &  1     & 0     \\
-      0     &  0     &  0     & 0.690
-      \end{pmatrix}
-  \end{equation*}
-\end{minipage}
-
-\begin{minipage}{0.34\linewidth}
-  \begin{equation*}
-    \pmb{\beta} = 
-      \begin{pmatrix}
-      0 &  0     & -0.427 & 0.136 \\
-      0 &  0     &  0     & 0     \\
-      0 &  0     &  0     & 0     \\
-      0 & -0.172 & -0.548 & 0    
-      \end{pmatrix}
-  \end{equation*}
+\begin{minipage}{0.57\linewidth}
+\[
+\gamma = 
+\begin{blockarray}{ccc}
+\rotatebox[]{90}{\textrm{\:\:Harm av.}} & \rotatebox[]{90}{\textrm{\:\:S. direct.}} & \\
+\begin{block}{(cc)c}
+  0      & -0.427 & \textrm{Depr.} \\
+  -0.172 & -0.55  & \textrm{Soc. f.} \\
+\end{block}
+\end{blockarray}
+\]
 \end{minipage}
 
 \end{document}

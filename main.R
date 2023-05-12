@@ -957,11 +957,11 @@ sem.model <- "
 sem.fit <- sem(sem.model, data=data, ordered=TRUE, meanstructure=FALSE,
                estimator="DWLS")
 
-str(sem.fit)
+lavInspect(sem.fit, what="std.all")
 stop()
 
 lambda = lavInspect(sem.fit, what="std.all")$lambda   # loadings                (n variables, n factors)
-theta = lavInspect(sem.fit, what="std.all")$theta     # factor covariances      (n factors, n factors)
+theta = lavInspect(sem.fit, what="std.all")$theta     # factor covariances ?    (n factors, n factors)
 psi = lavInspect(sem.fit, what="std.all")$psi         # error covariances       (n variables, n variables)
 beta = lavInspect(sem.fit, what="std.all")$beta       # regression coefficients (n variables, n factors)
 tau = lavInspect(sem.fit, what="std.all")$tau         # thresholds
