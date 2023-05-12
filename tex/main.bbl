@@ -162,6 +162,66 @@
       \field{year}{2015}
       \keyw{*Factor Analysis,*Factor Structure,*Mathematical Modeling,*Methodology,Applied Psychology,Computer Software,Confirmatory Factor Analysis,Latent Variables}
     \endentry
+    \entry{chan2020}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8bc94ef102c341b25e68b3c7aa058c9c}{%
+           family={Chan},
+           familyi={C\bibinitperiod},
+           given={Meingold\bibnamedelima Hiu-ming},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinithyphendelim m\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6eb0039cccaacb3e1d7ee838b4df14f7}{%
+           family={Gerhardt},
+           familyi={G\bibinitperiod},
+           given={Micah},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=adcfd6db6f96221f960ab464d692d179}{%
+           family={Feng},
+           familyi={F\bibinitperiod},
+           given={Xin},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{16993ea0f74a3f8d5cfa37260e615d74}
+      \strng{fullhash}{9d1b903a6e36a760ea78b15975a18ecc}
+      \strng{bibnamehash}{9d1b903a6e36a760ea78b15975a18ecc}
+      \strng{authorbibnamehash}{9d1b903a6e36a760ea78b15975a18ecc}
+      \strng{authornamehash}{16993ea0f74a3f8d5cfa37260e615d74}
+      \strng{authorfullhash}{9d1b903a6e36a760ea78b15975a18ecc}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1015-5759, 2151-2426}
+      \field{journaltitle}{European Journal of Psychological Assessment}
+      \field{month}{7}
+      \field{number}{4}
+      \field{title}{Measurement {Invariance} {Across} {Age} {Groups} and {Over} 20 {Years} {Time} of the {Negative} and {Positive} {Affect} {Scale} ({NAPAS})}
+      \field{urlday}{24}
+      \field{urlmonth}{4}
+      \field{urlyear}{2023}
+      \field{volume}{36}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \field{pages}{537\bibrangedash 544}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1027/1015-5759/a000529
+      \endverb
+      \verb{urlraw}
+      \verb https://econtent.hogrefe.com/doi/10.1027/1015-5759/a000529
+      \endverb
+      \verb{url}
+      \verb https://econtent.hogrefe.com/doi/10.1027/1015-5759/a000529
+      \endverb
+    \endentry
     \entry{joreskog1994}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=1f1aee4354599dea3ab95ecf7f798510}{%
@@ -180,8 +240,8 @@
       \strng{authorbibnamehash}{1f1aee4354599dea3ab95ecf7f798510}
       \strng{authornamehash}{1f1aee4354599dea3ab95ecf7f798510}
       \strng{authorfullhash}{1f1aee4354599dea3ab95ecf7f798510}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \true{uniqueprimaryauthor}

@@ -1,20 +1,27 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.5.2)  4 APR 2023 16:54
- restricted system commands enabled.
-**
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=latex 2022.5.2)  25 APR 2023 12:28
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCo
+de"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.
+{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\
+documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname
+ tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{
+\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode .a.b.c.\input
 
+*
 ! Emergency stop.
 <*> 
- 
+    
 End of file on the terminal!
 
-
-
-Here is how much of LuaTeX's memory you used:
- 4 strings out of 477785
- 100000,383344 words of node,token memory allocated 270 words of node memory still in use:
-   1 hlist, 39 glue_spec nodes
-   avail lists: 2:12,3:1,4:1,5:1
- 20836 multiletter control sequences out of 65536+600000
- 14 fonts using 591679 bytes
- 0i,0n,0p,0b,6s stack positions out of 10000i,1000n,20000p,200000b,200000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 
+Here is how much of TeX's memory you used:
+ 16 strings out of 478269
+ 365 string characters out of 5846374
+ 289375 words of memory out of 5000000
+ 18328 multiletter control sequences out of 15000+600000
+ 469259 words of font info for 28 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,12p,489b,10s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.

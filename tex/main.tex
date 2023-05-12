@@ -48,6 +48,8 @@
 \usepackage{fontspec}
 \usepackage[charter]{newtxmath}
 
+\setcounter{MaxMatrixCols}{30}
+
 \setmainfont{XCharter}
 \newfontfamily{\XCharterLF}{XCharter}[NFSSFamily=xcharterlf]
 
@@ -75,8 +77,8 @@ August\or September\or October\or November\or December\fi\ \number\year}
   \bf\sf Assignment
          \vspace*{20.0mm} \\
   \vspace*{40.0mm}}
-\author{\sf Van den Broeck Sebastiaan (r0902562)}
-\date{\sf 13/03/2023}
+\author{\sf Sebastiaan Van den Broeck (r0902562)}
+\date{\sf 28/05/2023}
 
 \begin{document}
 
@@ -86,7 +88,7 @@ August\or September\or October\or November\or December\fi\ \number\year}
     \scriptsize\sf           FACULTY OF SCIENCE \\
     \scriptsize\sf           DEPARTMENT OF MATHEMATICS \\
     \scriptsize\sf\bfseries  MASTER OF STATISTICS AND DATA SCIENCE \\
-    \scriptsize\sf\bfseries  STRUCTURAL EQUATION MODELING \\}
+    \scriptsize\sf\bfseries  STRUCTURAL EQUATIONS \\}
   \parbox[t]{40mm}{
     \begin{flushright}
       \includegraphics[height=15mm]{logo.eps.pdf}
@@ -101,60 +103,65 @@ August\or September\or October\or November\or December\fi\ \number\year}
 \setcounter{page}{1}
 \setcounter{tocdepth}{3}
 
-\section{Introduction}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\pagebreak\section{Introduction}
 
 It has been noted that almost one in six individuals in the United States will
-experience a depressive disorder. Consequently, considerable personal, social and
-economic loss can be attributed to this type of illness. Although there is clearly
-a very large societal impact of depression, little is known about its relationship
-with personality and social functioning. In this work I will test a hypothesis
-related to depression that has been proposed by \textcite{tse2011}. Specifically,
-they proposed that harm avoidance and self-directedness are indirectly linked to
-depression through social functioning. Moreover, there should also be a direct effect
-of self-directedness on depression. On the one hand, a behaviour can be classified
-under harm avoidance if it is done to avoid novelty and punishment. Self-directedness,
-on the other hand, is a form of self-determination and ability to regulate behaviour
-to suit goals and values. The authors have tested this hypothesis on a sample of
-university students, which limits the interpretability of their findings. By
-testing their hypothesis on a larger and more representative sample, I hope to
-contribute to the literature on depression. The dataset will be discussed next.
-Afterwards, a structural equation model has been used to test the hypothesis and
-will be discussed as well. Lastly, the results and implications thereof will be
-considered.
+experience a depressive disorder. Consequently, considerable personal, social
+and economic loss can be attributed to this type of illness. Although there is
+clearly a very large societal impact of depression, little is known about its
+relationship with personality and social functioning. In this work, I will test
+a hypothesis related to depression that has been proposed by \textcite{tse2011}.
+Specifically, they proposed that harm avoidance and self-directedness are
+indirectly linked to depression through social functioning. Moreover, there
+should also be a direct effect of self-directedness on depression. On the one
+hand, a behaviour can be classified under harm avoidance if it is done to avoid
+novelty and punishment. Self-directedness, on the other hand, is a form of
+self-determination and ability to regulate behaviour to suit goals and values.
+The authors have tested this hypothesis on a sample of university students,
+which limits the interpretability of their findings. By testing their hypothesis
+on a larger and more representative sample, I hope to contribute to the
+literature on depression. First, some preliminaries will be discussed: the data
+and measurement invariance. Afterwards, a structural equation model has been
+used to test the hypothesis and will be discussed as well. Lastly, the results
+and implications thereof will be considered.
 
-\section{Preliminaries}
-\subsection{Data}
+\section{Data}
 
 The data treated in this report is the Midlife in the United States (MIDUS)
-series. It is a national longitudinal study of health and well-being, created by
-a team of multi-disciplinary researchers. Currently, there are three waves in
-the study, which were collected via phone interviews, surveys and by bringing
-participants into clinical settings to facilitate collecting biological data.
-All three waves cover the contiguous United States in its entirety. The first wave
-was collected in 1995 and 1996, while the second wave was collected in 2004 and
-2005. The most recent and third wave was collected in 2013 and 2014. In this
-analysis, the second and third wave have been combined to create a bigger dataset.
-It was not possible to incorporate the first wave, since a lot of variables
-changed between the first and second and third waves (\cite{radler2014}). In this
-section I will discuss the variables that have been used in the analysis.
+series. It is a national study of health and well-being, created by a team of
+multi-disciplinary researchers. Currently, there are three waves in the study,
+which were collected via phone interviews, surveys and by bringing participants
+into clinical settings to facilitate collecting biological data. All three waves
+cover the contiguous United States in its entirety. The first wave was collected
+in 1995 and 1996, while the second wave was collected in 2004 and 2005. The most
+recent and third wave was collected in 2013 and 2014. In this analysis, the
+second and third waves have been combined to create a bigger dataset. It was not
+possible to incorporate the first wave, since a lot of variables changed between
+the first and second and third waves (\cite{radler2014}). In this section, I
+will discuss the variables that have been used in the analysis.
 
 An important reason for choosing this dataset is that it contains a lot of
 documentation for which variables form certain latent constructs such as
-depression or social anxiety. Since I am not too familiar with the field of
-psychology this would allow me to test a hypothesis that is better grounded in
-theory. First, depression is the most important latent variable in this work. It
-has been measured through seven questions during which the respondent reflects
-over the last two weeks. For example, the questions include losing interest,
-becoming tired, having trouble falling asleep or thinking about death. The
-responses have been recoded such that a higher score equates a higher level of
-depression. Specifically, each variable which measures this latent construct has
-been coded such that a 1 reflects a yes answer. As could be expected, a 0 then
-means a respondent has answered no.
+depression or social anxiety. I have to admit that I don't have a lot of
+experience with the field of psychology, so this documentation was very helpful
+and allows me to test a hypothesis that is better grounded in theory. First,
+depression is the most important latent variable in this work. It has been
+measured through seven questions during which the respondent reflects over their
+last two weeks. For example, the questions include losing interest, becoming
+tired, having trouble falling asleep or thinking about death. The responses have
+been recoded such that a higher score equates a higher level of depression.
+Specifically, each variable which measures this latent construct has been coded
+such that a 1 reflects a yes answer. As could be expected, a 0 then means a
+respondent has answered no.
 
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
 \caption{Depression indicators}
-\scalebox{0.8}{
+\scalebox{0.9}{
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Construct}          & \textbf{Code} & \textbf{Question}                                                                                                                                              \\ \hline
@@ -171,8 +178,8 @@ means a respondent has answered no.
 
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
-\caption{Depression indicators distribution}
-\scalebox{0.8}{
+\caption{Depression distribution}
+\scalebox{0.9}{
 \begin{tabular}{|l|l|ll|}
 \hline
 \multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{2}{l|}{\textbf{Count}} \\ \cline{3-4} 
@@ -188,6 +195,8 @@ means a respondent has answered no.
 }
 \end{table}
 
+\FloatBarrier
+
 Second, another important aspect in this report is harm avoidance. It has been
 described as an inheritable tendency for inhibiting behaviours to avoid novelty
 and punishment (\cite{tse2011}). Since it cannot be measured directly, four
@@ -195,15 +204,16 @@ questions were asked to get an idea about this construct. First, interviewees
 were asked whether they would enjoy experiencing an earthquake or learning to
 walk the tightrope. These two variables were reverse recoded such that a 4
 reflects not agreeing with the statement at all (harm avoidance), while a 1
-indicates fully agreeing (no avoidance). Second, interviewees were presented with
-two scenario's twice. For each question, one scenario corresponds to a harmful
-situation, while the other scenario's is harmless. Again, there was a recoding
-such that a higher score on these two variables indicates avoiding harm.
+indicates fully agreeing (no avoidance). Second, interviewees were presented
+with two scenario's twice. For each question, one scenario corresponds to a
+harmful situation, while the other scenario's is harmless. Again, there was a
+recoding such that a higher score on these two variables indicates avoiding
+harm.
 
-\begin{table}[h!]
+\begin{table}[h]
 \captionsetup{singlelinecheck=off}
 \caption{Harm avoidance indicators}
-\scalebox{0.8}{
+\scalebox{0.9}{
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Construct}              & \textbf{Code} & \textbf{Question}                                                                                                                                                                                                                                                                                                              \\ \hline
@@ -215,7 +225,8 @@ such that a higher score on these two variables indicates avoiding harm.
 }
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[h]
+\begin{minipage}[b]{0.55\linewidth}
 \captionsetup{singlelinecheck=off}
 \caption{Harm avoidance distribution}
 \scalebox{0.8}{
@@ -223,15 +234,12 @@ such that a higher score on these two variables indicates avoiding harm.
 \hline
 \multirow{2}{*}{\textbf{Construct}} & \multirow{2}{*}{\textbf{Code}} & \multicolumn{4}{l|}{\textbf{Count}}                                                                              \\ \cline{3-6} 
                                     &                                & \multicolumn{1}{l|}{\textbf{1 (harm)}} & \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\textbf{3}} & \textbf{4 (no harm)} \\ \hline
-\multirow{2}{*}{Harm avoidance}     & SE7D                         & \multicolumn{1}{l|}{33}                  & \multicolumn{1}{l|}{92}         & \multicolumn{1}{l|}{91}         & 389                 \\ \cline{2-6} 
-                                    & SE7V                         & \multicolumn{1}{l|}{25}                  & \multicolumn{1}{l|}{79}         & \multicolumn{1}{l|}{69}         & 432                 \\ \hline
+\multirow{2}{*}{Harm avoidance}     & SE7D                           & \multicolumn{1}{l|}{33}                  & \multicolumn{1}{l|}{92}         & \multicolumn{1}{l|}{91}         & 389                 \\ \cline{2-6} 
+                                    & SE7V                           & \multicolumn{1}{l|}{25}                  & \multicolumn{1}{l|}{79}         & \multicolumn{1}{l|}{69}         & 432                 \\ \hline
 \end{tabular}
 }
-\end{table}
-
-\begin{table}[h!]
-\captionsetup{singlelinecheck=off}
-\caption{Harm avoidance distribution}
+\end{minipage}
+\begin{minipage}[b]{0.4\linewidth}
 \scalebox{0.8}{
 \begin{tabular}{|l|l|ll|}
 \hline
@@ -241,16 +249,17 @@ such that a higher score on these two variables indicates avoiding harm.
                                     & SE7V                           & \multicolumn{1}{l|}{276}                  & 329       \\ \hline
 \end{tabular}
 }
+\end{minipage}
 \end{table}
 
 Third, we should not forget about self-directedness, which has been measured
-through three variables. It evaluates the amount of self-determination and ability
-a respondent has in order to regulate behaviour to achieve goals and values
-(\cite{tse2011}). Making plans for the future, knowing what to want out of life
-and setting goals are important for this dimension. Again, the variables were
-reverse coded such that a higher score reflects agreeing more with the statement.
-The data indicates that most participants agree somewhat or fully what the three
-statements.
+through three variables. It evaluates the amount of self-determination and
+ability a respondent has in order to regulate behaviour to achieve goals and
+values (\cite{tse2011}). Making plans for the future, knowing what to want out
+of life and setting goals are important for this dimension. Again, the variables
+were reverse coded such that a higher score reflects agreeing more with the
+statement. The data indicates that most participants agree somewhat or fully the
+three statements.
 
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
@@ -284,8 +293,9 @@ statements.
 Fourth, the latent variable social functioning has been used in the analysis.
 Seven questions related to this dimension were asked. The variables SE1BB, SE1D,
 SE1I and SE1V were reverse coded such that a higher score indicates a higher
-degree of social functioning.  The dataset counts 601 observations after deleting
-rows with missing values. A missingness at random principle is therefore assumed.
+degree of social functioning.  The dataset counts 601 observations after
+deleting rows with missing values. A missingness at random principle is
+therefore assumed.
 
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
@@ -294,12 +304,12 @@ rows with missing values. A missingness at random principle is therefore assumed
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Construct}                  & \textbf{Code} & \textbf{Question}                                                                                                                                    \\ \hline
-\multirow{7}{*}{Social functioning} & SE1BB       & \begin{tabular}[c]{@{}l@{}}People would describe me as a giving person, willing to share my time \\ with others.\end{tabular}                        \\ \cline{2-3} 
-                                    & SE1D        & Most people see me as loving and affectionate.                                                                                                       \\ \cline{2-3} 
-                                    & SE1HH       & I have not experienced many warm and trusting relationships with others.                                                                             \\ \cline{2-3} 
-                                    & SE1J        & Maintaining close relationships has been difficult and frustrating for me.                                                                           \\ \cline{2-3} 
-                                    & SE1P        & \begin{tabular}[c]{@{}l@{}}I often feel lonely because I have few close friends with whom to share my\\ concerns.\end{tabular}                       \\ \cline{2-3} 
-                                    & SE1V        & I enjoy personal and mutual conversations with family members and friends.                                                                           \\ \hline
+\multirow{7}{*}{Social functioning} & SE1BB         & \begin{tabular}[c]{@{}l@{}}People would describe me as a giving person, willing to share my time \\ with others.\end{tabular}                        \\ \cline{2-3} 
+                                    & SE1D          & Most people see me as loving and affectionate.                                                                                                       \\ \cline{2-3} 
+                                    & SE1HH         & I have not experienced many warm and trusting relationships with others.                                                                             \\ \cline{2-3} 
+                                    & SE1J          & Maintaining close relationships has been difficult and frustrating for me.                                                                           \\ \cline{2-3} 
+                                    & SE1P          & \begin{tabular}[c]{@{}l@{}}I often feel lonely because I have few close friends with whom to share my\\ concerns.\end{tabular}                       \\ \cline{2-3} 
+                                    & SE1V          & I enjoy personal and mutual conversations with family members and friends.                                                                           \\ \hline
 \end{tabular}
 }
 \end{table}
@@ -326,21 +336,22 @@ rows with missing values. A missingness at random principle is therefore assumed
 Lastly, the relationships between the variables themselves will be shortly
 considered. The correlation matrix is shown in Figure \ref{fig:corr}. The
 polychoric correlations play a pivotal role in this work and will be discussed
-in the next section. They have been shown in Figure \ref{fig:poly_corr} and
-are a little bit stronger than the traditional correlations.
+in the next section. For illustration purposes, they have been shown in Figure
+\ref{fig:poly_corr}. They are a little bit stronger than the traditional
+correlations.
 %
 First, we may notice some triangles near the diagonal. This is a good sign that
-the indicators of a construct are correlated with each other.
-Convergent validity is important in the context of structural equation modeling
-and means that indicators which load on the same factor should be strongly related
-to each other (\cite{brown2015}). In the case of the present study, the indicators
-of the depression latent variable do not appear to be strongly correlated with
-each other. This may present a problem for the model, which will be further discussed
-later. Second, it is clear that the variables of self-directedness and social functioning
-are negatively correlated. This is a good sign, since the structural equation
-model will be able to capitalize on this relationship. Moreover, it appears that
-some of the depression and social functioning indicators are negatively correlated
-as well.
+the indicators of a construct are correlated with each other. Convergent
+validity is important in the context of structural equation modeling and means
+that indicators that load on the same factor should be strongly related to each
+other (\cite{brown2015}). In the case of the present study, the indicators of
+the depression latent variable (first triangle) do not appear to be strongly
+correlated with each other. This may present a problem for the model, which will
+be further discussed later. Second, it is clear that the variables of
+self-directedness and social functioning are negatively correlated. This is a
+good sign as well, since the structural equation model will be able to
+capitalize on this relationship. Moreover, it appears that some of the
+depression and social functioning indicators are negatively correlated as well.
 
 \begin{figure}[h!]
 \centering
@@ -357,110 +368,18 @@ as well.
   \end{minipage}
 \end{figure}
 
-% Missing data
+\FloatBarrier\pagebreak\section{Structural equation model}
 
-\subsection{Invariance}
-
-% Explain the drop in df
-
-Before continuing any further, it is important to establish the measurement
-properties of the model. Test bias, which occurs when items are not measuring
-the underlying constructs in the same way across groups, should be avoided at
-all costs. By simultaneously putting restrictions on multiple parameters of the
-measurement model, such equivalence can be tested (\cite{brown2015}). From the
-previous section it is clear that longitudinal data has been used. Are the changes
-in a construct then due to changes in the construct itself or due to changes in
-how the construct is measured over time? Moreover, other sources of test bias,
-specifically the sex and age of the participants, will be tested as well.
-
-Configural invariance is the first step in this process and indicates that the
-factor structure is equal across groups. Second, metric invariance is tested by
-constraining the factor loadings to be equal across groups. Lastly, by also
-constraining the indicator intercepts to be equal, scalar invariance can be
-evaluated. A stepwise procedure can be employed by beginning with the least
-restricted solution and gradually testing whether the models $\chi^2$ are
-significantly different from each other. Essentially, a likelihood ratio test is
-used: a rejection of the null hypothesis then indicates that invariance cannot
-be concluded and that the more restricted model has a worse fit (\cite{brown2015}).
-However, it should be noted that the $\chi^2$ test is sensitive to sample size.
-Due to the large sample size in this study, other fit indices will therefore be
-used as well. The fit indices will be discussed in more detail later.
-
-\begin{table}[h]
-\captionsetup{singlelinecheck=off}
-\caption{Gender measurement invariance}
-\label{tab:gender_invariance}
-\scalebox{0.8}{
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
-\hline
-\textbf{Invariance form} & $\mathbf{\chi^2}$ & \textbf{df} & $\mathbf{\chi^2}$ \textbf{diff.} & \textbf{df diff.} & \textbf{p-value} & \textbf{RMSEA} & \textbf{SRMR} & \textbf{CFI} & \textbf{TLI} \\ \hline
-Configural               & 651.13            & 328         & /                               & /                & /                & 0.057          & 0.090         & 0.956        & 0.949        \\ \hline
-Metric                   & 703.46            & 348         & 52.34                           & 20               & \textless{}0.001 & 0.058          & 0.092         & 0.952        & 0.947        \\ \hline
-Scalar                   & 727.41            & 384         & 23.95                           & 36               & 0.938            & 0.054          & 0.092         & 0.954        & 0.954        \\ \hline
-\end{tabular}
-}
-\end{table}
-
-First, the invariance of the model with respect to gender will be tested. The
-$\chi^2$ difference between the configural and metric model of 52.34 is itself
-$\chi^2$ distributed with 20 degrees of freedom. In the metric model there are
-20 parameters less to estimate, since there are 20 factor loadings which are
-constrained to be equal across the male and female group. Unfortunately, the
-p-value associated with the $\chi^2$ test is highly significant (p<0.001), which
-indicates that the configural model has a better fit than the metric model. Hence,
-metric invariance cannot be concluded based on this test. Next, the $\chi^2$
-difference between the metric and scalar model of 23.95 is not significant
-(p=0.938). Based on this test, scalar invariance cannot be concluded, since metric
-invariance is still a necessary prerequisite. However, other fit measures should
-be taken into account due to the large sample size. The RMSEA, CFI and TLI
-(equations \ref{eq:rmsea}, \ref{eq:cfi}, \ref{eq:tli}) directly make a correction
-for complexity through the degrees of freedom, while the SRMR indirectly makes a
-correction through the dimensionality of the reproduced covariance (correlation)
-matrix. It is therefore reasonable to expect the fit measures to be more or less
-the same for the configural, metric and scalar models if the invariance holds.
-Indeed, as shown in Table \ref{tab:gender_invariance} this is the case. I will
-therefore conclude that scalar invariance for the male and female group holds.
-
-\begin{table}[h]
-\captionsetup{singlelinecheck=off}
-\caption{Time measurement invariance}
-\label{tab:time_invariance}
-\scalebox{0.8}{
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
-\hline
-\textbf{Invariance form} & $\mathbf{\chi^2}$ & \textbf{df} & $\mathbf{\chi^2}$ \textbf{diff.} & \textbf{df diff.} & \textbf{p-value} & \textbf{RMSEA} & \textbf{SRMR} & \textbf{CFI} & \textbf{TLI} \\ \hline
-Configural               & 653.66          & 328         & /                    & /                & /                & 0.057          & 0.092         & 0.956        & 0.949        \\ \hline
-Metric                   & 696.43          & 348         & 43.76                & 20               & 0.002            & 0.057          & 0.094         & 0.953        & 0.949        \\ \hline
-Scalar                   & 717.76          & 384         & 21.33                & 36               & 0.975            & 0.054          & 0.093         & 0.955        & 0.956        \\ \hline
-\end{tabular}
-}
-\end{table}
-
-Second, the two latest waves of the MIDUS dataset have been combined. The second
-wave was collected in 2004 and 2005, while the third wave originates from 2013
-and 2014. This source of invariance should be investigated as well, because we
-want to be sure that changes in a construct are due to the construct itself and
-not because the measurement of the construct has changed over time. Again, we
-have to conclude that there is no evidence for metric and scalar invariance based
-on the $\chi^2$ test. However, we now know that attention should be paid to other
-fit measures due to the large sample size. As shown in Table \ref{tab:time_invariance},
-the RMSEA, SRMR, CFI and TLI are very similar for the configural, metric and
-scalar models. I will therefore conclude that scalar invariance for the two waves
-hold, but it should be noted that the p-value associated with the $\chi^2$ test
-is not significant.
-
-\FloatBarrier
-\pagebreak
-\section{The base model}
-
-Next, the base model will be discussed. Based on the work of \textcite{tse2011},
-it has been concluded that depression can be explained through the constructs
-harm avoidance, self directedness and social functioning. In other words, there
-are four latent variables which are related to each other through a structural
-model. Harm avoidance and self-directedness have an effect on social functioning.
-Social functioning, then, has an effect on depression. Moreover, it was estimated
-that there is also a direct effect of self-directedness on depression.
-Hence, there should be no direct effect of harm avoidance on depression.
+Next, the full structural equation model will be discussed. In opposition to the
+previous section the structural model will be added to the mix. Based on the
+work of \textcite{tse2011}, it has been concluded that depression can be
+explained through the constructs harm avoidance, self directedness and social
+functioning. In other words, there are four latent variables which are related
+to each other through a structural model. Harm avoidance and self-directedness
+have an effect on social functioning. Social functioning, then, has an effect on
+depression. Moreover, it was estimated that there is also a direct effect of
+self-directedness on depression. Hence, there should be no direct effect of harm
+avoidance on depression.
 
 In the previous section it became clear that ordinal variables have been used in
 the analysis. Model identification and estimation will therefore be discussed
@@ -478,13 +397,15 @@ A structural equation model is said to be identified if every latent variable
 has its scale identified and the models degrees of freedom is zero or greater.
 To that end, the scale of the first indicator of every latent variable has been
 fixed to one. The model contains 85 parameters that should be estimated.
-Specifically, they are 16 ($=20 - 4$) loadings, 4 regression parameters, 60
+Specifically, there are 16 ($=20 - 4$) loadings, 4 regression parameters, 60
 thresholds (more on this later), 1 latent covariance and 4 latent variances.
 The degrees of freedom of the model therefore equals 20*21/2 - 85 = 210 - 85
-= 125.
+= 125. However, Lavaan reports that the degrees of freedom equals 165. Honestly,
+I don't know why this is the case. I have tried to find an explanation in the
+documentation of Lavaan, but I have not been able to find one.
 % 20*23/2-85 = 230-85 = 145
 % 20*25/2-85 = 250-85 = 165
-The following assumptions have been made on the equations shown
+Next, the following assumptions have been made on the equations shown
 in \ref{eq:base_model}. The measurement errors $\delta$ are supposed to have an
 expected value of 0. It is assumed that they have constant variance across
 observations and are mutually uncorrelated. There should be a covariance of zero
@@ -494,71 +415,87 @@ between these errors and the latent variables.
     \footnotesize
     \label{eq:base_model}
     \begin{cases}
-    \textrm{PA63}  & = \lambda_{11} \textrm{depression} + \delta_{11} \\
-    \textrm{PA64}  & = \lambda_{12} \textrm{depression} + \delta_{12} \\
-    \textrm{PA65}  & = \lambda_{13} \textrm{depression} + \delta_{13} \\
-    \textrm{PA66}  & = \lambda_{14} \textrm{depression} + \delta_{14} \\
-    \textrm{PA67}  & = \lambda_{15} \textrm{depression} + \delta_{15} \\
-    \textrm{PA68}  & = \lambda_{16} \textrm{depression} + \delta_{16} \\
-    \textrm{PA69}  & = \lambda_{17} \textrm{depression} + \delta_{17} \\
-    \textrm{SE7V}  & = \lambda_{21} \textrm{harm avoidance} + \delta_{21} \\
-    \textrm{SE7D}  & = \lambda_{22} \textrm{harm avoidance} + \delta_{22} \\
-    \textrm{SE8}   & = \lambda_{23} \textrm{harm avoidance} + \delta_{23} \\
-    \textrm{SE9}   & = \lambda_{24} \textrm{harm avoidance} + \delta_{24} \\
-    \textrm{SE14O} & = \lambda_{31} \textrm{self-directedness} + \delta_{31} \\
-    \textrm{SE14P} & = \lambda_{32} \textrm{self-directedness} + \delta_{32} \\
-    \textrm{SE14R} & = \lambda_{33} \textrm{self-directedness} + \delta_{33} \\
-    \textrm{SE1BB} & = \lambda_{41} \textrm{social functioning} + \delta_{41} \\
-    \textrm{SE1D}  & = \lambda_{42} \textrm{social functioning} + \delta_{42} \\
-    \textrm{SE1HH} & = \lambda_{43} \textrm{social functioning} + \delta_{43} \\
-    \textrm{SE1J}  & = \lambda_{44} \textrm{social functioning} + \delta_{44} \\
-    \textrm{SE1P}  & = \lambda_{45} \textrm{social functioning} + \delta_{45} \\
-    \textrm{SE1V}  & = \lambda_{46} \textrm{social functioning} + \delta_{46} \\
-    \textrm{social functioning} & = \beta_1 \textrm{harm avoidance} + \beta_2 \textrm{self-directedness} + \delta_1 \\
-    \textrm{depression} & = \beta_3 \textrm{social functioning} + \beta_4 \textrm{self-directedness} + \delta_2
+    \textrm{PA63}  & = \lambda_{11} \textrm{depression}         + \theta_{11} \\
+    \textrm{PA64}  & = \lambda_{12} \textrm{depression}         + \theta_{12} \\
+    \textrm{PA65}  & = \lambda_{13} \textrm{depression}         + \theta_{13} \\
+    \textrm{PA66}  & = \lambda_{14} \textrm{depression}         + \theta_{14} \\
+    \textrm{PA67}  & = \lambda_{15} \textrm{depression}         + \theta_{15} \\
+    \textrm{PA68}  & = \lambda_{16} \textrm{depression}         + \theta_{16} \\
+    \textrm{PA69}  & = \lambda_{17} \textrm{depression}         + \theta_{17} \\
+    \textrm{SE7V}  & = \lambda_{21} \textrm{harm avoidance}     + \theta_{21} \\
+    \textrm{SE7D}  & = \lambda_{22} \textrm{harm avoidance}     + \theta_{22} \\
+    \textrm{SE8}   & = \lambda_{23} \textrm{harm avoidance}     + \theta_{23} \\
+    \textrm{SE9}   & = \lambda_{24} \textrm{harm avoidance}     + \theta_{24} \\
+    \textrm{SE14O} & = \lambda_{31} \textrm{self-directedness}  + \theta_{31} \\
+    \textrm{SE14P} & = \lambda_{32} \textrm{self-directedness}  + \theta_{32} \\
+    \textrm{SE14R} & = \lambda_{33} \textrm{self-directedness}  + \theta_{33} \\
+    \textrm{SE1BB} & = \lambda_{41} \textrm{social functioning} + \theta_{41} \\
+    \textrm{SE1D}  & = \lambda_{42} \textrm{social functioning} + \theta_{42} \\
+    \textrm{SE1HH} & = \lambda_{43} \textrm{social functioning} + \theta_{43} \\
+    \textrm{SE1J}  & = \lambda_{44} \textrm{social functioning} + \theta_{44} \\
+    \textrm{SE1P}  & = \lambda_{45} \textrm{social functioning} + \theta_{45} \\
+    \textrm{SE1V}  & = \lambda_{46} \textrm{social functioning} + \theta_{46} \\
+    \textrm{social functioning} & = \beta_1 \textrm{harm avoidance} + \beta_2 \textrm{self-directedness} + \psi_1 \\
+    \textrm{depression} & = \beta_3 \textrm{social functioning} + \beta_4 \textrm{self-directedness} + \psi_2
+    \end{cases}
+    \iff
+    \begin{cases}
+      \underset{n \times n}{\pmb{x}} = \underset{n \times p}{\pmb{\Lambda}} \underset{?}{\pmb{\xi}} + \underset{n \times n}{\pmb{\theta}} \\
+      \underset{p \times p}{\pmb{y}} = \underset{p \times p}{\pmb{\beta}} \underset{?}{\pmb{\xi}} + \underset{p \times p}{\pmb{\psi}} \\
+      
+      \pmb{\theta} \sim \mathcal{N} (0, \Sigma_{\pmb{\theta}}) \\
+      \pmb{\psi} \sim \mathcal{N} (0, \Sigma_{\pmb{\psi}}) \\
+      
+      n = 20 \hfill \text{(number of variables)}        \\
+      p = 4  \hfill \text{(number of latent variables)} \\
+
     \end{cases}
 \end{equation}
 
+
+% TODO: add thing about software
+
 A considerable problem arises when one considers the assumption of multivariate
-normality on the residuals $\delta$. All observed variables are ordinal in nature,
-meaning that they are not continuous and should not be treated as such. Their
-means and (co)variances have no meaning, since they do not have origins or units
-of measurement (\cite{joreskog1994}). It would therefore be questionable to
-take the usual approach in SEM of modeling the covariance matrix. The standard
-maximum likelihood machinery used in SEM is therefore also not applicable. In this
-case, robust maximum likelihood or a least squares approach (unweighted least
-squares, diagonally weighted least squares or weighted least squares) can be used
-(\cite{yangwallentin2010}). The method of diagonally weighted least squares has
-been specifically developed for ordinal data and has been shown to yield better
-results when the sample size is not small (\cite{li2016}). It has therefore been
-applied here. First, polychoric correlations are estimated. Afterwards, the model
-parameters can be estimated. 
+normality on the residuals $\pmb{\theta}$. All observed variables are ordinal in
+nature, meaning that they are not continuous and should not be treated as such.
+Their means and (co)variances have no meaning, since they do not have origins or
+units of measurement (\cite{joreskog1994}). The standard maximum likelihood
+machinery used in SEM is therefore also not applicable. It would therefore be
+questionable to take the usual approach in SEM of modelling the covariance
+matrix, although it has been shown that MLE can be used in an ordinal context
+under certain conditions. In this case, robust maximum likelihood or a least
+squares approach (unweighted least squares, diagonally weighted least squares or
+weighted least squares) can be used (\cite{yangwallentin2010}). The method of
+diagonally weighted least squares for SEM has been specifically developed for
+ordinal data and has been shown to yield better results when the sample size is
+not small (\cite{li2016}). It has therefore been applied here. First, polychoric
+correlations are estimated. Afterwards, the model parameters can be estimated. 
 
 First, the polychoric correlations should be estimated. A solution can then be
 obtained by assuming that a latent, normal variable $x^*$ is responsible for the
 observed ordinal variables $x$. With $x=m$ I mean to say that $x$ belongs to a
-category $m$. Generally, the mean and variance if $x^*$ are not identified, since
-only ordinal information is available (\cite{simsek2012}). They are therefore
-fixed to zero and one. Thresholds are used to link the latent variable to its
-observed counterpart:
+category $m$. Generally, the mean and variance if $x^*$ are not identified,
+since only ordinal information is available (\cite{simsek2012}). They are
+therefore fixed to zero and one. Thresholds $\nu$ are used to link the latent
+variable to its observed counterpart:
 
 \begin{equation}
   x = m \:\: \text{if} \:\: \nu_m < x^* < \nu_{m+1} .
 \end{equation}
 
-Also, if one assumes $x^*$ is standard normally distributed and $\phi$ and $\Phi$
-denote the standard normal density and distribution functions:
+Also, if one assumes $x^*$ is standard normally distributed and $\phi$ and
+$\Phi$ denote the standard normal density and distribution functions:
 
 \begin{equation}
-  \pi_m = Pr[x=m] = Pr[\nu_m < x^* < \nu_{m+1}] = \int^{\nu_{m+1}}_{\nu_m} \phi(u)du = \Phi(\nu_{m+1}) - \Phi(\nu_m) .
+  P[x=m] = P[\nu_m < x^* < \nu_{m+1}] = \int^{\nu_{m+1}}_{\nu_m} \phi(u)du = \Phi(\nu_{m+1}) - \Phi(\nu_m) .
 \end{equation}
 
-In other words, a certain response $m$ from the ordinal variable $x$ is observed,
-if the response from its latent variable $x^*$ falls between two thresholds.
-Hence, the thresholds are also parameters to be estimated. As far as I am aware,
-the polychoric correlations can then be estimated using maximum likelihood.
-Afterwards, the model parameters can be estimated using a weighted least squares
-approach. The ML and DWLS fit functions are defined as follows:
+In other words, a certain response $m$ from the ordinal variable $x$ is
+observed, if the response from its latent variable $x^*$ falls between two
+thresholds. Hence, the thresholds are also parameters to be estimated. As far as
+I am aware, the polychoric correlations can be estimated using maximum
+likelihood. Afterwards, the model parameters can be estimated using a weighted
+least squares approach. The ML and DWLS fit functions are defined as follows:
 
 \begin{align}
   F_{ML} &= \ln |S_{ML}| - \ln |\Sigma| + \text{trace}[(S_{ML})(\Sigma^{-1})] - p \tag{ML fit function} \\
@@ -569,42 +506,182 @@ $S_{ML}$ is the covariance or correlation matrix and $S_{DWLS}$ contains the
 polychoric correlations. $\Sigma$ is the reproduced covariance or correlation
 matrix and depends on the models parameters. $W_D^{-1}$ is a diagonal weight
 matrix, with weights that are inversely proportional to the variances of the
-polychoric correlations (\cite{yangwallentin2010}). We can therefore conclude that
-both approaches aim at minimizing the difference between a reproduced and sample
-covariance or correlation matrix. An important difference, however, is that the
-least squares approach allows a weighting for correcting for large polychoric
-correlations.
+polychoric correlations (\cite{yangwallentin2010}). We can therefore conclude
+that both approaches aim at minimizing the difference between a reproduced and
+sample covariance or correlation matrix. An important difference, however, is
+that the least squares approach allows a weighting for correcting the bias that
+is present in the MLE approach.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}
-base.model <- "
+model <- "
     # measurement
-    depression =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
-    harm_avoidance =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
-    self_directedness =~ C1SE14O + C1SE14P + C1SE14R
+    depression         =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
+    harm_avoidance     =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
+    self_directedness  =~ C1SE14O + C1SE14P + C1SE14R
     social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1P + C1SE1V
 
     # structural
-    social_functioning ~ harm_avoidance+a*self_directedness
-    depression ~ b*social_functioning + c*self_directedness
+    social_functioning ~ harm_avoidance + a*self_directedness
+    depression         ~ b*social_functioning + c*self_directedness
     
     IE := a*b
     TE := c + (a*b) 
 "
 
-base.fit <- sem(base.model, data=data, ordered=TRUE, meanstructure=FALSE,
-                estimator="DWLS")
-summary(base.fit, standardized=TRUE, fit.measures=TRUE)
-modindices(base.fit, sort=TRUE, maximum.number=20)
+fit <- sem(sem, data=data, ordered=TRUE, meanstructure=FALSE,
+           estimator="DWLS")
+summary(sem, standardized=TRUE, fit.measures=TRUE)
+modindices(sem, sort=TRUE, maximum.number=20)
 \end{lstlisting}
 \end{minipage}
 
-\FloatBarrier
-\subsection{Measurement model}
+\FloatBarrier\subsection{Invariance testing}
+
+% Explain the drop in df
+
+Before continuing any further, it is important to establish the measurement
+properties of the model. Test bias, which occurs when items are not measuring
+the underlying constructs in the same way across groups, should be avoided at
+all costs. By simultaneously putting restrictions on multiple parameters of the
+measurement model, such equivalence can be tested (\cite{brown2015}). From the
+previous section it is clear that the last two waves of the MIDUS dataset have
+been combined. Are the changes in a construct then due to changes in the
+construct itself or due to changes in how the construct is measured over time?
+Moreover, another source of test bias, the sex of the participants, will be
+tested as well.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+cfa.model <- "
+    depression         =~ C1PA63 + C1PA64 + C1PA65 + C1PA66 + C1PA67 + C1PA68 + C1PA69
+    harm_avoidance     =~ C1SE7V + C1SE7D + C1SE8 + C1SE9
+    self_directedness  =~ C1SE14O + C1SE14P + C1SE14R
+    social_functioning =~ C1SE1BB + C1SE1D + C1SE1HH + C1SE1J + C1SE1P + C1SE1V
+"
+cfa.fit.conf.sex     <- cfa(cfa.model, data=data, ordered=TRUE, estimator="DWLS",
+                        group="C1PRSEX", meanstructure=TRUE)
+cfa.fit.tau.sex      <- cfa(cfa.model, data=data, ordered=TRUE, estimator="DWLS",
+                       group="C1PRSEX", group.equal=c("loadings"), meanstructure=TRUE)
+cfa.fit.parallel.sex <- cfa(cfa.model, data=data, ordered=TRUE, estimator="DWLS",
+                            group="C1PRSEX", group.equal=c("loadings", "intercepts"),
+                            meanstructure=TRUE)
+
+lavTestLRT(cfa.fit.conf.sex, cfa.fit.tau.sex)
+lavTestLRT(cfa.fit.tau.sex, cfa.fit.parallel.sex)
+summary(cfa.fit.conf.sex, fit.measures=TRUE, standardized=TRUE)\$fit
+summary(cfa.fit.tau.sex, fit.measures=TRUE, standardized=TRUE)\$fit
+summary(cfa.fit.parallel.sex, fit.measures=TRUE, standardized=TRUE)\$fit
+\end{lstlisting}
+\end{minipage}
+
+Configural invariance is the first step in this process and indicates that the
+factor structure is equal across groups. Second, metric invariance is tested by
+constraining the factor loadings to be equal. Lastly, by also
+constraining the indicator intercepts to be equal, scalar invariance can be
+evaluated. A stepwise procedure can be employed by beginning with the least
+restricted solution and gradually testing whether the models $\chi^2$ are
+significantly different from each other. Essentially, a likelihood ratio test is
+used: a rejection of the null hypothesis then indicates that invariance cannot
+be concluded and that the more restricted model has a worse fit
+(\cite{brown2015}). However, it should be noted that the $\chi^2$ test is
+sensitive to sample size. Due to the large sample size in this study, other fit
+indices (RMSEA, SRMR, CFI and TLI) will therefore be used as well. Based on my
+observation, a drop of at most 0.01 in CLI or TLIl results in trivial model fit
+and measurement invariance can be concluded (\cite{chan2020}). I have not found
+guidelines for RMSEA and SRMR, but they can still be used informally to make an
+evaluation. The calculation and interpretation of the fit indices will be
+discussed in more detail later on.
+
+\begin{table}[h]
+\captionsetup{singlelinecheck=off}
+\caption{Sex measurement invariance}
+\label{tab:sex_invariance}
+\scalebox{0.9}{
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Invariance form} & $\mathbf{\chi^2}$ & \textbf{df} & $\mathbf{\chi^2}$ \textbf{diff.} & \textbf{df diff.} & \textbf{p-value} & \textbf{RMSEA} & \textbf{SRMR} & \textbf{CFI} & \textbf{TLI} \\ \hline
+Configural               & 651.13            & 328         & /                                & /                & /                & 0.057          & 0.090         & 0.956        & 0.949         \\ \hline
+Metric                   & 701.56            & 344         & 50.44                            & 16               & \textless{}0.001 & 0.059          & 0.092         & 0.952        & 0.947         \\ \hline
+Scalar                   & 726.79            & 380         & 25.23                            & 36               & 0.910            & 0.055          & 0.092         & 0.953        & 0.953         \\ \hline
+\end{tabular}
+}
+\end{table}
+
+First, the invariance of the model with respect to sex will be tested. It
+should be noted that there are 168 males and 440 females in the sample. The
+female group therefore has a higher contribution to the $\chi^2$ and can
+contribute more to the model misfit. The $\chi^2$ difference between the
+configural and metric model of 50.44 is itself $\chi^2$ distributed with 16
+degrees of freedom. In the metric model, there are 16 parameters less to
+estimate, since there are 16 factor loadings which are constrained to be equal
+across the male and female groups. Unfortunately, the p-value associated with
+the $\chi^2$ test is highly significant (p<0.001), which indicates that the
+configural model has a better fit than the metric model. Hence, metric
+invariance cannot be concluded based on this test. Next, the $\chi^2$ difference
+between the metric and scalar model of 25.23 is not significant (p=0.910). Based
+on this test, scalar invariance cannot be concluded, since metric invariance is
+still a necessary prerequisite. However, other fit measures should be taken into
+account due to the large sample size. The RMSEA, CFI and TLI directly correct
+for complexity through the degrees of freedom, while the SRMR indirectly makes a
+correction through the dimensionality of the reproduced covariance (correlation)
+matrix. It is therefore reasonable to expect the fit measures to be more or less
+the same for the configural, metric and scalar models if the invariance holds.
+Indeed, as shown in Table \ref{tab:sex_invariance} this is the case. I will
+therefore conclude that scalar invariance for the male and female groups holds.
+
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+cfa.fit.conf.wave     <- cfa(cfa.model, data=data, ordered=TRUE, estimator="DWLS",
+                         group="source")
+cfa.fit.tau.wave      <- cfa(cfa.model, data=data, ordered=TRUE, estimator="DWLS",
+                        group="source", group.equal=c("loadings"))
+cfa.fit.parallel.wave <- cfa(cfa.model, data=data, ordered=TRUE, estimator="DWLS",
+                             group="source", group.equal=c("loadings", "intercepts"))
+
+lavTestLRT(cfa.fit.conf.wave, cfa.fit.tau.wave)
+lavTestLRT(cfa.fit.tau.wave, cfa.fit.parallel.wave)
+summary(cfa.fit.conf.wave, fit.measures=TRUE, standardized=TRUE)\$fit
+summary(cfa.fit.tau.wave, fit.measures=TRUE, standardized=TRUE)\$fit
+summary(cfa.fit.parallel.wave, fit.measures=TRUE, standardized=TRUE)\$fit
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{table}[h]
+\captionsetup{singlelinecheck=off}
+\caption{Time measurement invariance}
+\label{tab:time_invariance}
+\scalebox{0.9}{
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Invariance form} & $\mathbf{\chi^2}$ & \textbf{df} & $\mathbf{\chi^2}$ \textbf{diff.} & \textbf{df diff.} & \textbf{p-value} & \textbf{RMSEA} & \textbf{SRMR} & \textbf{CFI} & \textbf{TLI} \\ \hline
+Configural               & 653.66            & 328         & /                                & /                 & /                & 0.057          & 0.092         & 0.956        & 0.949        \\ \hline
+Metric                   & 688.60            & 344         & 34.94                            & 16                & 0.004            & 0.057          & 0.094         & 0.954        & 0.949        \\ \hline
+Scalar                   & 702.82            & 380         & 14.22                            & 36                & 0.999            & 0.053          & 0.093         & 0.957        & 0.957        \\ \hline
+\end{tabular}
+}
+\end{table}
+
+Second, the two latest waves of the MIDUS dataset have been combined. The second
+wave was collected in 2004 and 2005, while the third wave originates from 2013
+and 2014. This source of invariance should be investigated as well, because we
+want to be sure that changes in a construct are due to the construct itself
+changing and not because the measurement of the construct has changed over time.
+Again, we have to conclude that there is no evidence for metric and scalar
+invariance based on the $\chi^2$ test. However, we now know that attention
+should be paid to other fit measures due to the large sample size. As shown in
+Table \ref{tab:time_invariance}, the RMSEA, SRMR, CFI and TLI are very similar
+for the configural, metric and scalar models. In fact, the  CFI and TLI of the
+model with scalar invariance are higher. I will therefore conclude that scalar
+invariance for the two waves hold, but it should be noted that the result of the
+$\chi^2$ test is not significant.
+
+\FloatBarrier\subsection{Measurement model}
 
 % Measurement model
 % More interpretation of loadings here
-Second, we will take a closer look at the measurement model, which indicates
+Second, we will take a closer look at the measurement model, which specifies
 how indicators relate to their latent constructs. The factor loading can be
 interpreted as the regression slope for predicting the indicator from the latent
 variable (\cite{brown2015}). The standardized loading is often more interesting,
@@ -619,8 +696,9 @@ rules, a popular cut-off value for the communality appears to be 0.5
 be explained by the latent variable. Based on my observation, communalities that
 are a little bit lower are also acceptable, as long as there is a good
 theoretical justification for the relationship between the factor and indicator.
-The standardized loading should then be larger than 0.7, which means that the
-indicator does a good job at reflecting the latent construct.
+The standardized loading should then be larger than 0.7, which means that there
+is a high correlation and the indicator does a good job at reflecting the latent
+construct.
 
 %     OK PA63 During those two weeks, did you lose interest in most things?
 % NOT OK PA64 Thinking about these same two weeks, did you feel more tired
@@ -636,7 +714,8 @@ indicator does a good job at reflecting the latent construct.
 %             or death in general - during those two weeks?
 
 Inspecting Table \ref{tab:measurement_base}, it is evident to see that the
-measurement model is lacking in some places.
+measurement model is lacking in some places. Especially the indicators that are
+associated with depression are problematic.
 Using PA63, the respondent was asked about losing interest in most things. The
 high standardized loading of 0.850 indicates that the indicator is strongly
 correlated with its construct. The same applies to PA68 (participant feels down,
@@ -645,14 +724,16 @@ of the variance in this indicator is explained by the latent variable.
 Unfortunately, we have to conclude that the other depression indicators have a
 standardized loading that is too low. Consequently, they are weakly correlated
 with their construct and have a residual variance that is too high. 
-The variables PA64, PA65, PA66, PA67 and PA69 are the problematic cases. In fact,
-the loading associated with PA66 is not even significantly different from zero
-(p = 0.136). The indicators PA64, PA65 and PA66 assess feeling low on energy, a
-loss of appetite and trouble falling asleep. PA67 and PA69 evaluate trouble
-concentrating and often thinking about death. A simple way to improve the model
-fit may be to reduce the number of variables that load on depression by deleting
-these problematic indicators. However, this action would lead to a decline of
-the theoretical support and validity of the model as well (\cite{hair2010}).
+The variables PA64, PA65, PA66, PA67 and PA69 are the problematic cases. In
+fact, the loading associated with PA66 is not even significantly different from
+zero (p = 0.136). The indicators PA64, PA65 and PA66 assess feeling low on
+energy, a loss of appetite and trouble falling asleep. PA67 and PA69 evaluate
+trouble concentrating and often thinking about death. A simple way to improve
+the model fit may be to reduce the number of variables that load on depression
+by deleting these problematic indicators. However, this action would lead to a
+decline of the theoretical support and validity of the model as well since these
+variables were specifically designed by the authors of the dataset to load on
+depression (\cite{hair2010}).
 
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
@@ -702,14 +783,14 @@ SE1V              & 1.113            & 0.060                   & 18.606         
 %      => not really a choice between a harm and no harm situation, but between
 %         a harm and embarrassment situation
 
-Next, the harm avoidance construct, which measures whether a behaviour is done to
-avoid novelty and punishment, plays a central role in this work. It is measured
-using four indicators: SE7V, SE7D, SE8 and SE9.
-In SE7V the participant is asked whether or not it might be fun to experience an
-earthquake. By squaring the standardized loading of 0.602, a low communality of
-0.362 is obtained. In other words, there is a moderate correlation between the
-indicator and the harm avoidance construct, but the residual variance is too high.
-The variable SE7D was formed by asking the interviewee whether or not it might be
+Next, the harm avoidance construct, which measures whether a behaviour is done
+to avoid novelty and punishment, plays a central role in this work. It is
+measured using four indicators: SE7V, SE7D, SE8 and SE9. In SE7V the participant
+is asked whether or not it might be fun to experience an earthquake. By squaring
+the standardized loading of 0.602, a somewhat low communality of 0.362 is
+obtained. In other words, there is a moderate correlation between the indicator
+and the harm avoidance construct, but the residual variance is too high. The
+variable SE7D was formed by asking the interviewee whether or not it might be
 fun to learn to walk the tightrope. The standardized loading of 0.724 is high enough.
 Next, SE8 and SE9 are used to measure harm avoidance by presenting the respondent
 with two situations. Afterwards, a choice has to be made between them. The
@@ -766,13 +847,13 @@ others.' The standardized loading of 0.564 indicates a poor correlation and a
 high residual variance.
 The same problem is present in SE1D, which has a standardized loading of 0.539.
 SE1HH is used to measure whether the respondent has experienced many warm and
-trusting relationships with others. The communality of 0.788 indicates that there
+trusting relationships with others. The standardized loading of 0.788 indicates that there
 is a high correlation and the indicator does a good job in explaining the variance
 of the latent variable.
 In SE1J it was asked whether the interviewee has experienced difficulties in
-maintaining close relationships. The standardized loading of 0.788 is high enough
+maintaining close relationships. The standardized loading of 0.759 is high enough
 and indicates that a one standardized unit increase in social functioning is
-estimated to lead to an increase of 0.788 standardized units in SE1J.
+estimated to lead to an increase of 0.759 standardized units in SE1J.
 Next, SE1P is used to measure whether the respondent often feels lonely because
 he or she has few close friends with whom to share his or her concerns. The
 standardized loading of 0.746 is high enough.
@@ -783,32 +864,31 @@ mutual conversations with family members and friends. The loading is borderline
 To sum up, there are a fair amount of indicators that have a low standardized
 loading. Some authors would therefore delete them from the dataset and refit the
 model. However, I have decided to leave them in the model, since there is a good
-theoretical justification for their relationship with the latent variable.
-Furthermore, one needs to take this problem into account when interpreting the
-results from the structural model and model evaluation. A chain is only as
-strong as its weakest link and in a structural equation model the measurement
-model is a very important link.
+theoretical justification for their relationship with the latent variable. The
+variables were specifically designed by the authors of the dataset to load on
+certain latent variables. Furthermore, one needs to take this problem into
+account when interpreting the results from the structural model and model
+evaluation. A chain is only as strong as its weakest link and in a structural
+equation model the measurement model is a very important link.
 
 \FloatBarrier
 \subsection{Structural model}
 
 % Structural model
 The structural model is of great interest in this work, since it allows us
-to make conclusions about the relationships between the latent constructs.
+to make conclusions about the relationships between the constructs.
 First, we may consider the direct effect of harm avoidance ($\beta_1$) and
 self-directedness ($\beta_2$) on social functioning. Both parameters estimates
-are highly significant and indicate a negative relationship with social
-functioning.
-On the one hand, it is estimated that there is a weak, negative relationship
-between harm avoidance and social functioning. The standardized regression
-coefficient of -0.172 indicates that an increase of one standardized unit in
-harm avoidance will lead to a decrease of 0.172 standardized units in social
-functioning.
-On the other hand, it appears that there is a stronger relationship between
-self-directedness and social functioning. This result is a bit counterintuitive,
-since the standardized parameter of -0.548 indicates a strong negative
-relationship. I would have personally expected a positive relationship between
-the two constructs.
+are highly significant (p<0.001) and indicate a negative relationship with
+social functioning. On the one hand, it is estimated that there is a weak,
+negative relationship between harm avoidance and social functioning. The
+standardized coefficient of -0.172 indicates that an increase of one
+standardized unit in harm avoidance is estimated to lead to a decrease of 0.172
+standardized units in social functioning. On the other hand, it appears that
+there is a stronger relationship between self-directedness and social
+functioning. This result is a bit counterintuitive, since the standardized
+parameter of -0.548 indicates a strong negative relationship. I would have
+personally expected a positive relationship between the two constructs.
 
 Following the theory proposed by \textcite{tse2011}, we may expect there to be
 a significant effect of social functioning on depression. Indeed, the results
@@ -823,13 +903,14 @@ direct relationship between the two (p < 0.001). In other words, more
 self-directedness is estimated to lead to less depression.
 Next, the indirect effect of -0.075 is calculated by multiplying the
 standardized parameter estimates of the direct effect of self-directedness on
-social functioning ($\beta_2 = -0.548$) and the direct effect of social functioning
-on depression ($\beta_3 = 0.136$). 
+social functioning ($\beta_2 = -0.548$) and the direct effect of social
+functioning on depression ($\beta_3 = 0.136$). 
 The total effect (-0.502) can be calculated by adding the direct effect
 ($\beta_4 = -0.427$) to the indirect effect. The indirect, direct and total
 effects are all highly significant (p < 0.001).
 
 \begin{table}[h]
+\vspace{0.2cm}
 \begin{equation}
 \footnotesize
   \begin{cases}
@@ -838,47 +919,48 @@ effects are all highly significant (p < 0.001).
     \tag{Structural model}
   \end{cases}
 \end{equation}
-\captionsetup{singlelinecheck=off}
-\caption{Structural model}
+\vspace{0.2cm}
+\captionsetup{singlelinecheck=off}\caption{Structural model}
 \label{tab:base_structural}
 \scalebox{0.8}{
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-\textbf{Parameter} & \textbf{Coefficient} & \textbf{Standard error} & \textbf{z-value} & \textbf{p-value} & \textbf{Stand. coefficient} \\ \hline
-$\beta_1$          &  -0.161 \hfill       & 0.033                   &  -4.824          & \textless 0.001  & -0.172                      \\ \hline
-$\beta_2$          &  -0.376 \hfill       & 0.024                   &  -15.948         & \textless 0.001  & -0.548                      \\ \hline
-$\beta_3$          &   0.206 \hfill       & 0.064                   &   3.214          & 0.001            &  0.136                      \\ \hline
-$\beta_4$          &  -0.442 \hfill       & 0.056                   &  -7.956          & \textless 0.001  & -0.427                      \\ \hline
+\textbf{Parameter} & \textbf{Coefficient} & \textbf{Stand. coefficient} & \textbf{Standard error} & \textbf{z-value} & \textbf{p-value} \\ \hline
+$\beta_1$          &  -0.161 \hfill       & -0.172                      & 0.033                   &  -4.824          & \textless 0.001  \\ \hline
+$\beta_2$          &  -0.376 \hfill       & -0.548                      & 0.024                   &  -15.948         & \textless 0.001  \\ \hline
+$\beta_3$          &   0.206 \hfill       &  0.136                      & 0.064                   &   3.214          & 0.001            \\ \hline
+$\beta_4$          &  -0.442 \hfill       & -0.427                      & 0.056                   &  -7.956          & \textless 0.001  \\ \hline
 \end{tabular}
 }
 \end{table}
 
 Moreover, the latent variables social functioning and depression have a residual
 variance, since they are not exogenous in nature. In the standardized solution,
-the residual variance indicates the portion of the variance that is not accounted
-for by the latent variable. Both depression and social functioning have a high
-residual variance: 0.737 and 0.690, respectively. This insight indicates that
-something is not entirely correct with the model, since these residual covariances
-should be lower if the latent variables are being predicted correctly.
+the residual variance indicates the portion of the variance that is not
+accounted for by the latent variable. Both depression and social functioning
+have a high residual variance: 0.737 and 0.690, respectively. Although we don't
+have anything to compare these numbers to, this insight still indicates that
+something is not entirely correct with the model. I would have expected the
+residual covariances to be lower if the latent variables were being predicted
+correctly.
 
 Strongly related to the structural model is the notion of discriminant validity.
-Discriminant validity gives an indication that theoretically different constructs
-should not be highly intercorrelated. In other words, if two latent variables
-are highly correlated they could represent the same construct and they could be
-merged into one latent variable to obtain a more parsimonious solution
+Discriminant validity gives an indication that theoretically different
+constructs should not be highly intercorrelated. In other words, if two latent
+variables are highly correlated they could represent the same construct and they
+could be merged into one latent variable to obtain a more parsimonious solution
 (\cite{brown2015}). The low and insignificant (p=0.108) standardized covariance
 or correlation of -0.1 between harm avoidance and self-directedness indicates
 that there is little evidence for poor discriminant validity.
 
-\pagebreak
-\subsection{Goodness of fit}
+\pagebreak\subsection{Goodness of fit}
 
 Fourth, the goodness of fit of the model will be evaluated using $\chi^2$, SRMR,
-RMSEA, CFI and TLI. The sources of misfit will be further investigated using
-modification indices. It was previously concluded that there are some problems
-with the measurement model. The structural model seemed fine, but the results
-were a bit counterintuitive. This evaluation step is therefore crucial to
-further determine if the model is a good fit for the data or not.
+RMSEA, CFI and TLI. Afterwards, the sources of misfit will be further
+investigated using modification indices. It was previously concluded that there
+are some problems with the measurement model. The structural model seemed fine,
+but the results were a bit counterintuitive. This evaluation step is therefore
+crucial to further determine if the model is a good fit for the data or not.
 
 \subsubsection{Test statistics}
 
@@ -889,18 +971,19 @@ It has been noted that it is inflated by sample size and in many instances the
 underlying distribution is not $\chi^2$ distributed (\cite{brown2015}).
 In this illustration, the test statistic of 505.23 is larger than the critical
 value of 105.52. Hence, the null hypothesis that this model is equal to a
-perfectly fitting model can be rejected and poor model fit is concluded. However,
-given the large sample size this result should not be trusted.
+perfectly fitting model can be rejected and poor model fit is concluded.
+However, given the large sample size this result should not be trusted.
 
 % Absolute fit
-Absolute fit indices have therefore been employed. They assess the quality of
-the solution without taking into account model parsimony. First, the standardized
-root mean square residual (SRMR) can be interpreted as the square root average
-standardized residual covariance (polychoric correlation). It can be calculated
-using the following equation, where $p$ is the number of indicators and $\epsilon$
-is the vector of the standardized residual covariances (\cite{shi2020}). In this
-illustration a SRMR of 0.081 was obtained, which indicates borderline poor model
-fit as it is just above the target of 0.08.
+Absolute fit indices have therefore been employed. They are absolute in the
+sense they assess the quality of the solution without taking into account model
+parsimony. First, the standardized root mean square residual (SRMR) can be
+interpreted as the square root of the average standardized residual covariance
+(polychoric correlation). It can be calculated using the following equation,
+where $p$ is the number of indicators and $\epsilon$ is the vector of the
+standardized residual covariances (\cite{shi2020}). In this illustration a SRMR
+of 0.081 was obtained, which indicates borderline poor model fit as it is just
+above the target of 0.08.
 
 \begin{minipage}{0.48\linewidth}
 \begin{equation}
@@ -917,9 +1000,10 @@ fit as it is just above the target of 0.08.
 
 Second, the root mean square error of approximation (RMSEA) is based on the
 $\chi^2$ statistic and takes into account the error of approximation in the
-population. The RMSEA takes values between zero and one and the fit of the model
-is acceptable if it falls under 0.05. A borderline unacceptable fit is obtained
-with a RMSEA of 0.058.
+population. Interestingly, it is the only fit measure that takes into account
+the sample size $N$. The RMSEA takes values between zero and one and the fit of
+the model is deemed acceptable if it falls under 0.05. A borderline unacceptable 
+fit is obtained with a RMSEA of 0.058.
 
 % Comparative fit
 The CFI and TLI are two comparative fit indices that will be evaluated as well.
@@ -950,7 +1034,7 @@ borderline good or bad, depending on which fit measures are taken into account.
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
 \caption{Test statistics}
-\scalebox{0.8}{
+\scalebox{0.9}{
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Statistic} & \textbf{Value} & \textbf{Target}   \\ \hline
@@ -965,22 +1049,22 @@ SRMR               & 0.081          & < 0.08            \\ \hline
 
 \begin{table}[h!]
 \captionsetup{singlelinecheck=off}
-\caption{The 10 highest modification indices of base model}
+\caption{The 10 highest modification indices}
 \label{tab:base_modification}
-\scalebox{0.8}{
+\scalebox{0.83}{
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
 \textbf{Left hand side} & \textbf{Operation} & \textbf{Right hand side} & \textbf{Modification index} & \textbf{\begin{tabular}[c]{@{}l@{}}Expected parameter\\ change\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Stand. expected\\ parameter change\end{tabular}} \\ \hline
-C1SE1BB                 & correlation        & C1SE1D                   & 90.619                      &  0.329                                                                       &  0.473 \\ \hline
-C1SE14O                 & correlation        & C1SE14R                  & 44.130                      &  0.317                                                                       &  0.778 \\ \hline
-social\_functioning     & loading            & C1SE14P                  & 36.950                      & -0.551                                                                       & -0.311 \\ \hline
-C1SE1BB                 & correlation        & C1SE1HH                  & 34.474                      & -0.290                                                                       & -0.570 \\ \hline
-social\_functioning     & loading            & C1PA65                   & 29.688                      & -0.415                                                                       & -0.234 \\ \hline
-social\_functioning     & loading            & C1PA66                   & 26.101                      & -0.403                                                                       & -0.227 \\ \hline
-social\_functioning     & loading            & C1SE14O                  & 22.440                      &  0.463                                                                       &  0.261 \\ \hline
-depression              & loading            & C1SE1D                   & 20.018                      & -0.253                                                                       & -0.215 \\ \hline
-social\_functioning     & loading            & C1SE7V                   & 19.761                      &  0.255                                                                       &  0.144 \\ \hline
-C1SE1HH                 & correlation        & C1SE1J                   & 19.647                      &  0.170                                                                       &  0.424 \\ \hline
+SE1BB                   & correlation        & SE1D                     & 90.619                      &  0.329                                                                       &  0.473 \\ \hline
+SE14O                   & correlation        & SE14R                    & 44.130                      &  0.317                                                                       &  0.778 \\ \hline
+social\_functioning     & loading            & SE14P                    & 36.950                      & -0.551                                                                       & -0.311 \\ \hline
+SE1BB                   & correlation        & SE1HH                    & 34.474                      & -0.290                                                                       & -0.570 \\ \hline
+social\_functioning     & loading            & PA65                     & 29.688                      & -0.415                                                                       & -0.234 \\ \hline
+social\_functioning     & loading            & PA66                     & 26.101                      & -0.403                                                                       & -0.227 \\ \hline
+social\_functioning     & loading            & SE14O                    & 22.440                      &  0.463                                                                       &  0.261 \\ \hline
+depression              & loading            & SE1D                     & 20.018                      & -0.253                                                                       & -0.215 \\ \hline
+social\_functioning     & loading            & SE7V                     & 19.761                      &  0.255                                                                       &  0.144 \\ \hline
+SE1HH                   & correlation        & SE1J                     & 19.647                      &  0.170                                                                       &  0.424 \\ \hline
 \end{tabular}                                                                                                    
 }
 \end{table}
@@ -995,53 +1079,140 @@ produce modification indices that are small in magnitude. A modification index
 that is greater than 3.84 indicates that the model fit can be significantly
 improved if the parameter is freely estimated (\cite{brown2015}). Unfortunately,
 the summary shown in Table \ref{tab:base_modification} indicates that there are
-various sources of badness of fit associated with the measurement model. The
-question is now how to proceed. Since structural equation modeling is at heart
-a theory testing framework, it is important to first investigate the reason why
-a certain modification index is too large. A proper theoretical justification
-needs to be present before freeing a parameter.
+various sources of badness of fit associated with the measurement model.
 
-% 1SE1BB <=> SE1D: YES
-First, a huge drop in the model's $\chi^2$ of 90.62 can be realized by allowing
-a correlated error term between the variables 1SE1BB and SE1D, which share a
-loading on social functioning. On the one hand, SE1BB assesses whether the 
-respondent believes other people would describe him/her as a giving person.
-On the other hand, SE1D evaluates whether the respondent believes other people
-see him/her as loving and affectionate. Personally, I believe that it is very
-plausible that these two variables are related to one another. A correlation
-between these variables will therefore be allowed in the improved model.
+% The
+% question is now how to proceed. Since structural equation modeling is at heart
+% a theory testing framework, it is important to first investigate the reason why
+% a certain modification index is too large. A proper theoretical justification
+% needs to be present before freeing a parameter.
 
-% 1SE14O <=> 1SE14R: NO
+First, we may notice three very high modification indicates that have to do with
+correlated error terms.
+A huge drop in the model's $\chi^2$ of 90.62 can be realized by allowing a
+correlated error term between the variables SE1BB and S1D, which share a loading
+on social functioning. On the one hand, SE1BB assesses whether the respondent
+believes other people would describe him/her as a giving person. On the other
+hand, SE1D evaluates whether the respondent believes other people see him/her as
+loving and affectionate. Personally, I believe that it is very plausible that
+these variables are related to one another.
 Next, the modification indices indicate that the model fit would improve
 dramatically should a correlated error term be allowed between the
 self-directedness variables 1SE14O and 1SE14R. In 1SE14O and 1SE14R it is asked
 whether the respondent likes to make plans for the future and knows what to want
-out of life, respectively. Personally, I cannot see how these variables would be
-directly related to each other.
-
-% social functioning =~ 1SE14P
-Third, it is suggested that cross-loading can be allowed in the model to improve
-its fit. Specifically, the variable SE14P is suggested to load on social
-functioning. In 1SE14P it is asked whether the interviewee likes to make plans
-for the future. Clearly, this variable is more related to self-directedness than
-social functioning. Allowing such a cross-loading would also make the structural
-model more difficult to interpret.
-
-% 1SE1HH <=> 1SE1BB
+out of life, respectively.
 Additionally, the modification indices indicate that a correlated error term
 should be allowed between the variables 1SE1HH and 1SE1BB. Both variables have a
 loading on social functioning. 1SE1HH indicates whether the respondent has
 experienced many warm and trusting relationships. 1SE1BB assesses whether the
 respondent believes he or she would be described by others as a giving person,
-willing to share his or her time. Personally, I cannot see how both variables are
-directly related to each other.
+willing to share his or her time.
 
-\FloatBarrier
-\pagebreak
-\section{Expanding the base model}
+Second, from Table \ref{tab:base_modification} we can see that the other
+modification indices are related to cross-loadings.
+Specifically, the variable SE14P (self-directedness) is suggested to
+load on social functioning. In 1SE14P it is asked whether the interviewee likes
+to make plans for the future. Clearly, this variable is more related to
+self-directedness than social functioning.
+Furthermore, PA65 and PA66 load on depression and assess whether the respondent
+has lost appetite during the last two weeks or had trouble falling asleep. The
+model's $/chi^2$ would decrease by 29.69 and 26.10 should a cross-loading be
+allowed on social functioning. Clearly, this is a spurious relationship that-
+should not be allowed.
+SE14O loads on social functioning as well, and asks whether the interviewee
+likes to make plans for the future. This variable is clearly more related to
+self-directedness than social functioning and a cross-loading should therefore
+not be allowed.
+Lastly, the modification indices suggest that SE1D should have a loading on
+depression. SE1D assesses whether the respondent believes other people see
+him/her as loving and affectionate.
 
-\FloatBarrier
-\pagebreak
-\section{Conclusion}
+\FloatBarrier\pagebreak\section{Conclusion}
+
+In this work, I have set out to investigate a theory about depression that has
+been proposed by \textcite{tse2011}. The authors tested their theory on a sample
+of university students and suggested that depression can be explained by
+self-directedness, social functioning and harm avoidance. By testing their
+theory on a larger and more representative sample, I have contributed to the
+literature on depression. After testing the invariance properties, a structural
+equation model was specified and estimated. Unfortunately, we have to recognize
+that the fit of the measurement model was not satisfactory. Moreover, the
+modification indices suggested that there are various places where the fit
+could be improved. Since the structural model is based on the measurement model,
+the findings should be taken with a grain of salt. Indeed, the results of the
+structural model were a bit counterintuitive and not in line with the findings
+of \textcite{tse2011}. In the future, it would be interesting to make
+improvements to the measurement model and re-estimate the structural model.
+
+\FloatBarrier\pagebreak\section{References}
+\printbibliography[heading=none]
+
+\FloatBarrier\pagebreak\section{Appendices}
+\subsection{Code}
+
+Unfortunately, the R code was too extensive too directly include here. I have
+therefore made it \href{https://github.com/vandenbroecksebastiaan/SEM/}{available on Github}
+(main.R). The data is included as well.
+
+\subsection{(Fully standardized) matrices}
+
+\begin{minipage}{0.35\linewidth}
+  \begin{equation*}
+    \pmb{\lambda} = 
+      \begin{pmatrix}
+      0.850           & 0	              & 0	                & 0           \\
+      0.536	          & 0	              & 0	                & 0           \\
+      0.168	          & 0	              & 0	                & 0           \\
+      0.061	          & 0	              & 0	                & 0           \\
+      0.548	          & 0	              & 0	                & 0           \\
+      0.757	          & 0	              & 0	                & 0           \\
+      0.306	          & 0	              & 0	                & 0           \\
+      0	              & 0.602	          & 0	                & 0           \\
+      0	              & 0.724	          & 0	                & 0           \\
+      0	              & 0.719	          & 0	                & 0           \\
+      0	              & 0.446	          & 0	                & 0           \\
+      0	              & 0	              & 0.821	            & 0           \\
+      0	              & 0	              & 0.807	            & 0           \\
+      0	              & 0	              & 0.699	            & 0           \\
+      0	              & 0	              & 0	                & 0.564       \\
+      0	              & 0	              & 0	                & 0.539       \\
+      0	              & 0	              & 0	                & 0.788       \\
+      0	              & 0	              & 0	                & 0.759       \\
+      0	              & 0	              & 0	                & 0.746       \\
+      0	              & 0	              & 0	                & 0.628       
+      \end{pmatrix}
+  \end{equation*}
+\end{minipage}
+
+\begin{minipage}{0.76\linewidth}
+\begin{align*}
+\pmb{\theta} = \textrm{diag}(& 0.278, 0.713, 0.972, 0.996, 0.699, 0.428, 0.906, 0.637 ,0.475, 0.482, \\
+                             & 0.801, 0.325, 0.349, 0.512, 0.682, 0.709, 0.379, 0.425, 0.444, 0.606)
+\end{align*}
+\end{minipage}
+
+\begin{minipage}{0.33\linewidth}
+  \begin{equation*}
+    \pmb{\psi} = 
+      \begin{pmatrix}
+      0.737 &  0     &  0     & 0     \\
+      0     &  1     &  0     & 0     \\
+      0     & -0.107 &  1     & 0     \\
+      0     &  0     &  0     & 0.690
+      \end{pmatrix}
+  \end{equation*}
+\end{minipage}
+
+\begin{minipage}{0.34\linewidth}
+  \begin{equation*}
+    \pmb{\beta} = 
+      \begin{pmatrix}
+      0 &  0     & -0.427 & 0.136 \\
+      0 &  0     &  0     & 0     \\
+      0 &  0     &  0     & 0     \\
+      0 & -0.172 & -0.548 & 0    
+      \end{pmatrix}
+  \end{equation*}
+\end{minipage}
 
 \end{document}
