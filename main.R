@@ -1,5 +1,6 @@
 library(lavaan)
 library(semPlot)
+library(corrplot)
 
 data_B <- read.csv("ICPSR_04652/DS0001/04652-0001-Data.tsv", sep="\t")
 data_C <- read.csv("ICPSR_36346/DS0001/36346-0001-Data.tsv", sep="\t")
@@ -708,7 +709,6 @@ data <- data[, c(depression_indicators_C,
 data <- na.omit(data)
 print("DIM DATA"); dim(data);
 
-# library(corrplot)
 # jpeg(file="visualizations/corr.png", width=30, height=30, units="cm", res=300)
 # corrplot(cor(data), method="color", type="lower")
 # dev.off()
@@ -957,16 +957,26 @@ sem.model <- "
 sem.fit <- sem(sem.model, data=data, ordered=TRUE, meanstructure=FALSE,
                estimator="DWLS")
 
-lavInspect(sem.fit, what="std.all")
-stop()
+# res <- lavResiduals(sem.fit, type="raw")$cov
+# res.stand <- lavResiduals(sem.fit, type="raw")$cov.z
+# 
+# jpeg(file="visualizations/residuals.png", width=30, height=30, units="cm",
+#      res=300)
+# corrplot(res, method="color", type="lower", is.corr=FALSE, outline=TRUE)
+# dev.off()
+# 
+# jpeg(file="visualizations/residuals_stand.png", width=30, height=30, units="cm",
+#      res=300)
+# corrplot(res.stand, method="color", type="lower", is.corr=FALSE, outline=TRUE)
+# dev.off()
+# 
+# lambda = lavInspect(sem.fit, what="std.all")$lambda
+# theta = lavInspect(sem.fit, what="std.all")$theta
+# psi = lavInspect(sem.fit, what="std.all")$psi
+# beta = lavInspect(sem.fit, what="std.all")$beta
+# tau = lavInspect(sem.fit, what="std.all")$tau
 
-lambda = lavInspect(sem.fit, what="std.all")$lambda   # loadings                (n variables, n factors)
-theta = lavInspect(sem.fit, what="std.all")$theta     # factor covariances ?    (n factors, n factors)
-psi = lavInspect(sem.fit, what="std.all")$psi         # error covariances       (n variables, n variables)
-beta = lavInspect(sem.fit, what="std.all")$beta       # regression coefficients (n variables, n factors)
-tau = lavInspect(sem.fit, what="std.all")$tau         # thresholds
-
-lambda
+# lambda
 #         dprssn hrm_vd slf_dr scl_fn
 # C1PA63   0.850  0.000  0.000  0.000
 # C1PA64   0.536  0.000  0.000  0.000
@@ -989,7 +999,7 @@ lambda
 # C1SE1P   0.000  0.000  0.000  0.746
 # C1SE1V   0.000  0.000  0.000  0.628
 
-theta
+# theta
 #         C1PA63 C1PA64 C1PA65 C1PA66 C1PA67 C1PA68 C1PA69 C1SE7V C1SE7D C1SE8 C1SE9 C1SE14O C1SE14P C1SE14R C1SE1B C1SE1D C1SE1H C1SE1J C1SE1P C1SE1V
 # C1PA63   0.278                                                                                                                                      
 # C1PA64   0.000  0.713                                                                                                                               
@@ -1012,21 +1022,21 @@ theta
 # C1SE1P   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000 0.000 0.000   0.000   0.000   0.000  0.000  0.000  0.000  0.000  0.444       
 # C1SE1V   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000 0.000 0.000   0.000   0.000   0.000  0.000  0.000  0.000  0.000  0.000  0.606
 
-psi
+# psi
 #                    dprssn hrm_vd slf_dr scl_fn
 # depression          0.737                     
 # harm_avoidance      0.000  1.000              
 # self_directedness   0.000 -0.107  1.000       
 # social_functioning  0.000  0.000  0.000  0.690
 
-beta
+# beta
 #                    dprssn hrm_vd slf_dr scl_fn
 # depression              0  0.000 -0.427  0.136
 # harm_avoidance          0  0.000  0.000  0.000
 # self_directedness       0  0.000  0.000  0.000
 # social_functioning      0 -0.172 -0.548  0.000
 
-tau
+# tau
 #            thrshl
 # C1PA63|t1  -0.816
 # C1PA64|t1  -1.369
@@ -1089,7 +1099,7 @@ tau
 # C1SE1V|t5   1.684
 # C1SE1V|t6   1.995
 
-summary(sem.fit, standardized=TRUE, fit.measures=TRUE)
+# summary(sem.fit, standardized=TRUE, fit.measures=TRUE)
 # lavaan 0.6.14 ended normally after 40 iterations
 # 
 #   Estimator                                       DWLS
@@ -1341,9 +1351,9 @@ modindices(sem.fit, sort=TRUE, maximum.number=20)
 # 177     harm_avoidance =~ C1SE14P 13.430  0.307   0.185    0.185    0.185
 # 272             C1PA66 ~~  C1PA69 13.113  0.241   0.241    0.253    0.253
 
-jpeg(file="visualizations/model.png", width=30, height=30, units="cm", res=400)
-semPaths(sem.fit, what="diagram", whatLabels="stand", layout="tree2", rotation=2,
-         sizeMan=5, sizeMan2=3, sizeLat=8, sizeLat2=4, intercepts=FALSE,
-         edge.color="black", thresholds=FALSE, label.scale=TRUE, asize=1.5,
-         edge.label.cex=0.5, label.cex=1)
-dev.off()
+# jpeg(file="visualizations/model.png", width=30, height=30, units="cm", res=400)
+# semPaths(sem.fit, what="diagram", whatLabels="stand", layout="tree2", rotation=2,
+#          sizeMan=5, sizeMan2=3, sizeLat=8, sizeLat2=4, intercepts=FALSE,
+#          edge.color="black", thresholds=FALSE, label.scale=TRUE, asize=1.5,
+#          edge.label.cex=0.5, label.cex=1)
+# dev.off()
